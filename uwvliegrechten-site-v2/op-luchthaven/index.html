@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ik ben nu op de luchthaven | UwVliegrechten</title>
+    <meta name="description" content="Je bent op de luchthaven met een probleem? Laat de assistent je stap voor stap helpen met je vlucht, vertraging, annulering of overboeking." />
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="canonical" href="https://uwvliegrechten.nl/op-luchthaven/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://uwvliegrechten.nl/op-luchthaven/">
+<meta property="og:title" content="Ik ben nu op de luchthaven | UwVliegrechten">
+<meta property="og:description" content="Je bent op de luchthaven met een probleem? Laat de assistent je stap voor stap helpen met je vlucht, vertraging, annulering of overboeking.">
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="vr-home" data-page="op-luchthaven">
+      <header class="vr-nav vr-nav-dark">
+        <div class="vr-wrap">
+          <a class="vr-logo" href="../index.html"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
+          <nav class="vr-menu" aria-label="Hoofdmenu">
+            <a href="../index.html">Home</a>
+            <a href="../vlucht-vertraagd/index.html">Vertraagd</a>
+            <a href="../vlucht-geannuleerd/index.html">Geannuleerd</a>
+            <a href="../overboekt/index.html">Overboekt</a>
+            <a href="../op-luchthaven/index.html" aria-current="page">Op luchthaven</a>
+            <a href="../over/index.html">Over</a>
+            <a href="../contact/index.html">Contact</a>
+          </nav>
+          <a class="vr-nav-cta" href="../vergoedingscheck/index.html">Check je vergoeding</a>
+        </div>
+      </header>
+
+      <main class="vr-page vr-ai-page">
+        <div class="vr-breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span> / </span>
+          <span>Op de luchthaven</span>
+        </div>
+
+        <h1>Ik ben nu op de luchthaven met een probleem</h1>
+        <p class="vr-ai-intro">
+          Vertel kort wat er is gebeurd. De assistent vraagt je daarna één voor één de juiste vragen, zodat je weet wat je nu het beste kunt doen.
+        </p>
+
+        <div class="vr-ai-shell">
+          <div class="vr-ai-header">
+            <span class="vr-ai-status-dot"></span>
+            <span>Stap voor stap hulp op de luchthaven</span>
+          </div>
+          <div class="vr-ai-chat" id="assistant-chat" aria-live="polite" aria-relevant="additions"></div>
+          <div class="vr-ai-actions" id="assistant-actions"></div>
+          <div class="vr-ai-input-wrap">
+            <label class="sr-only" for="assistant-input">Typ je antwoord</label>
+            <input id="assistant-input" type="text" placeholder="Of typ kort wat er is gebeurd" />
+            <button id="assistant-send" type="button">Verstuur</button>
+          </div>
+        </div>
+
+        <section class="vr-ai-help">
+          <h2>Wat je meteen kunt doen</h2>
+          <ul>
+            <li>Vraag om een schriftelijke verklaring van de airline.</li>
+            <li>Bewaar je boardingpass, app-meldingen en emails.</li>
+            <li>Vraag naar eten, drinken of hotel als je te lang moet wachten.</li>
+            <li>Noteer de exacte tijd van vertraging, annulering of overbooking.</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="vr-foot">
+        <div class="vr-wrap">
+          <div class="vr-foot-grid">
+            <div class="vr-foot-brand">
+              <a class="vr-logo" href="../index.html"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
+              <p>Heldere uitleg over je rechten bij een vertraagde, geannuleerde of overboekte vlucht.</p>
+            
+<a class="vr-foot-email" href="mailto:malesteinsem@gmail.com">malesteinsem@gmail.com</a></div>
+            <div>
+              <h4>Je rechten</h4>
+              <a href="../vlucht-vertraagd/index.html">Vlucht vertraagd</a>
+              <a href="../vlucht-geannuleerd/index.html">Vlucht geannuleerd</a>
+              <a href="../overboekt/index.html">Overboekt</a>
+              <a href="../vergoedingscheck/index.html">Vergoedingscheck</a>
+            </div>
+            <div>
+              <h4>Over de site</h4>
+              <a href="../over/index.html">Over</a>
+              <a href="../contact/index.html">Contact</a>
+              <a href="../privacy/index.html">Privacyverklaring</a>
+            </div>
+          </div>
+          <p class="vr-foot-note">Algemene informatie, geen juridisch advies. Of jij recht hebt op een vergoeding hangt af van jouw situatie. Sommige links zijn affiliate-links. UwVliegrechten is een persoonlijk project en niet verbonden aan een luchthaven of airline.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      (() => {
+        const chatEl = document.getElementById('assistant-chat');
+        const actionsEl = document.getElementById('assistant-actions');
+        const inputEl = document.getElementById('assistant-input');
+        const sendBtn = document.getElementById('assistant-send');
+
+        const state = {
+          issue: null,
+          detail: null,
+          done: false
+        };
+
+        function addMessage(type, text) {
+          const msg = document.createElement('div');
+          msg.className = type === 'bot' ? 'vr-chat-bubble vr-chat-bot' : 'vr-chat-bubble vr-chat-user';
+          msg.textContent = text;
+          chatEl.appendChild(msg);
+          chatEl.scrollTop = chatEl.scrollHeight;
+        }
+
+        function renderButtons(buttons) {
+          actionsEl.innerHTML = '';
+          buttons.forEach((button) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'vr-ai-choice';
+            btn.textContent = button.label;
+            btn.addEventListener('click', () => {
+              if (button.value !== undefined) {
+                handleAnswer(button.value);
+              }
+            });
+            actionsEl.appendChild(btn);
+          });
+        }
+
+        function setQuestion(question, buttons) {
+          addMessage('bot', question);
+          renderButtons(buttons);
+          inputEl.value = '';
+          inputEl.focus();
+        }
+
+        function normalize(value) {
+          return String(value || '').trim().toLowerCase();
+        }
+
+        function parseIssue(text) {
+          const value = normalize(text);
+          if (!value) return null;
+          if (/vertr|laat|delay/.test(value)) return 'vertraagd';
+          if (/gean|annul|cancel/.test(value)) return 'geannuleerd';
+          if (/overboekt|overbook|vol/.test(value)) return 'overboekt';
+          if (/bagage|koffer|luggage/.test(value)) return 'bagage';
+          if (/wijzig|change|rebook|ticket/.test(value)) return 'wijziging';
+          return 'ander';
+        }
+
+        function parseDelay(text) {
+          const value = normalize(text);
+          if (/minder dan 3|0|1|2/.test(value)) return 'minder-dan-3';
+          if (/3|4/.test(value) && !/minder dan 3|meer dan 4/.test(value)) return '3-4';
+          if (/meer dan 4|5|6|7|8|9|10|veel/.test(value)) return 'meer-dan-4';
+          return 'onzeker';
+        }
+
+        function getIssueText() {
+          const issue = state.issue;
+          if (issue === 'vertraagd') return 'vertraging';
+          if (issue === 'geannuleerd') return 'annulering';
+          if (issue === 'overboekt') return 'overbooking';
+          if (issue === 'bagage') return 'bagageprobleem';
+          if (issue === 'wijziging') return 'vluchtwijziging';
+          return 'luchtvaartprobleem';
+        }
+
+        function finalizeAdvice() {
+          state.done = true;
+          actionsEl.innerHTML = '';
+          inputEl.closest('.vr-ai-input-wrap').hidden = true;
+
+          let summary = '';
+          let nextStep = '';
+          let checklist = [];
+
+          if (state.issue === 'vertraagd') {
+            summary = 'Je hebt waarschijnlijk een reden om direct om hulp te vragen. Bij een vertraging van 3 uur of meer op je eindbestemming kun je vaak recht hebben op een oplossing en soms compensatie.';
+            nextStep = 'Vraag om een schriftelijke verklaring van de airline, noteer je werkelijke aankomsttijd en vraag meteen naar een alternatieve vlucht of compensatie.';
+            checklist = [
+              'Bewaar je boardingpass en app-meldingen',
+              'Vraag om een officiële reden voor de vertraging',
+              'Noteer je aankomsttijd en de vertraging in minuten',
+              'Vraag om eten, drinken of hotel als je langere tijd moet wachten'
+            ];
+          } else if (state.issue === 'geannuleerd') {
+            summary = 'Bij een annulering moet de airline je vaak een alternatief bieden of je geld terugbetalen. Als de annulering kort voor vertrek was, kan ook compensatie mogelijk zijn.';
+            nextStep = 'Vraag direct om een nieuwe vlucht, een terugbetaling of een verklaring waarom de vlucht is geannuleerd. Zeg ook dat je de tijd van de annulering wilt noteren.';
+            checklist = [
+              'Vraag naar een nieuwe vlucht of geld terug',
+              'Bewaar het annuleringbericht en je booking',
+              'Vraag om een geschreven reden van annulering',
+              'Sla bonnetjes van kosten op voor later'
+            ];
+          } else if (state.issue === 'overboekt') {
+            summary = 'Bij overbooking heb je vaak recht op een andere vlucht, een vergoeding of een alternatief, afhankelijk van wat de airline biedt.';
+            nextStep = 'Vraag direct naar een andere vlucht of een vergoeding. Vraag ook om de officiële reden van de overbooking en neem een foto of screenshot van de situatie.';
+            checklist = [
+              'Vraag om een alternatieve vlucht',
+              'Vraag om een schriftelijke uitleg van de overbooking',
+              'Bewaar je ticket en bevestiging',
+              'Noteer hoeveel tijd je bent kwijtgeraakt'
+            ];
+          } else if (state.issue === 'bagage') {
+            summary = 'Bij bagageproblemen moet je de airline meteen laten registreren wat er mis is. Dat is belangrijk voor vergoeding of compensatie.';
+            nextStep = 'Vraag meteen een verloren-bagageformulier of een schadeverklaring. Bewaar je bagagesticker en alle correspondentie.';
+            checklist = [
+              'Vraag een claimnummer of schadeformulier',
+              'Bewaar je bagagesticker en ticket',
+              'Maak foto’s van je bagage en de bagagebelt',
+              'Vraag naar een ontvangstbewijs voor je melding'
+            ];
+          } else if (state.issue === 'wijziging') {
+            summary = 'Bij een gewijzigde vlucht of herbooking kun je vaak nog een alternatief vragen. De airline moet vaak duidelijk maken welke opties er zijn.';
+            nextStep = 'Vraag om alle mogelijke alternatieven en vraag naar een geschreven uitleg van de wijziging.';
+            checklist = [
+              'Vraag naar de nieuwe vluchtinformatie',
+              'Bewaar de wijziging in de app of per e-mail',
+              'Vraag of de airline je kosten terugbetaalt',
+              'Noteer het tijdverschil van de wijziging'
+            ];
+          } else {
+            summary = 'De airline hoeft niet alles direct zelf te regelen, maar je hebt wel recht op een duidelijke uitleg en op een juiste behandeling van je situatie.';
+            nextStep = 'Vraag om een schriftelijke verklaring en vraag welke alternatieven de airline jou biedt. Noteer alles dat je zegt en vraag om een referentienummer.';
+            checklist = [
+              'Vraag om een referentienummer',
+              'Bewaar alle meldingen en screenshots',
+              'Vraag om de officiële reden van de airline',
+              'Gebruik de check op deze site voor je volgende stappen'
+            ];
+          }
+
+          addMessage('bot', summary);
+          addMessage('bot', nextStep);
+
+          const result = document.createElement('div');
+          result.className = 'vr-ai-result';
+          const tipsHtml = checklist.map((item) => '<li>' + item + '</li>').join('');
+          result.innerHTML = '<strong>Checklist voor nu:</strong><ul class="vr-ai-tips">' + tipsHtml + '</ul>';
+          chatEl.appendChild(result);
+          chatEl.scrollTop = chatEl.scrollHeight;
+
+          const restart = document.createElement('button');
+          restart.type = 'button';
+          restart.className = 'vr-ai-choice vr-ai-reset';
+          restart.textContent = 'Nog een keer starten';
+          restart.addEventListener('click', () => {
+            state.issue = null;
+            state.detail = null;
+            state.done = false;
+            inputEl.closest('.vr-ai-input-wrap').hidden = false;
+            chatEl.innerHTML = '';
+            actionsEl.innerHTML = '';
+            startFlow();
+          });
+          actionsEl.appendChild(restart);
+        }
+
+        function handleAnswer(value) {
+          if (state.done) return;
+
+          const input = normalize(value);
+
+          if (!state.issue) {
+            const detected = parseIssue(input);
+            if (!detected) {
+              addMessage('user', value);
+              addMessage('bot', 'Ik begrijp je situatie niet helemaal. Kies een van de opties hieronder of beschrijf kort wat er is gebeurd.');
+              return;
+            }
+
+            state.issue = detected;
+            addMessage('user', value);
+
+            if (detected === 'vertraagd') {
+              setQuestion('Hoeveel uur ben je ongeveer te laat op je eindbestemming?', [
+                { label: 'Minder dan 3 uur', value: 'minder-dan-3' },
+                { label: '3 tot 4 uur', value: '3-4' },
+                { label: 'Meer dan 4 uur', value: 'meer-dan-4' },
+                { label: 'Weet ik niet precies', value: 'onzeker' }
+              ]);
+              return;
+            }
+
+            if (detected === 'geannuleerd') {
+              setQuestion('Hoe wil je het liefst verder? Kies wat het dichtst bij je situatie past.', [
+                { label: 'Nieuwe vlucht', value: 'nieuwe-vlucht' },
+                { label: 'Geld terug', value: 'geld-terug' },
+                { label: 'Ik weet het nog niet', value: 'onzeker' }
+              ]);
+              return;
+            }
+
+            if (detected === 'overboekt') {
+              setQuestion('Heb je een alternatief aangeboden door de airline?', [
+                { label: 'Ja, een nieuwe vlucht', value: 'nieuwe-vlucht' },
+                { label: 'Nee, nog niets', value: 'nog-niet' },
+                { label: 'Ik weet het niet', value: 'onzeker' }
+              ]);
+              return;
+            }
+
+            if (detected === 'bagage') {
+              setQuestion('Is je bagage verloren, beschadigd of vertraagd aangekomen?', [
+                { label: 'Verloren', value: 'verloren' },
+                { label: 'Beschadigd', value: 'beschadigd' },
+                { label: 'Te laat', value: 'te-laat' },
+                { label: 'Ik weet het nog niet', value: 'onzeker' }
+              ]);
+              return;
+            }
+
+            setQuestion('Wat is precies het probleem dat je nu op de luchthaven ervaart?', [
+              { label: 'Ik wil een nieuwe vlucht', value: 'nieuwe-vlucht' },
+              { label: 'Ik wil compensatie', value: 'compensatie' },
+              { label: 'Ik wil mijn rechten weten', value: 'rechten' },
+              { label: 'Ik wil andere hulp', value: 'anders' }
+            ]);
+            return;
+          }
+
+          const type = normalize(value);
+
+          if (state.issue === 'vertraagd') {
+            state.detail = parseDelay(type) === 'onzeker' ? 'onzeker' : parseDelay(type);
+            if (state.detail === 'minder-dan-3') {
+              addMessage('user', value);
+              addMessage('bot', 'Als je minder dan 3 uur te laat bent, is de kans op compensatie kleiner, maar je hebt nog steeds recht op een duidelijke uitleg en mogelijke hulp van de airline. Vraag nu naar de reden en een alternatief.');
+            } else {
+              addMessage('user', value);
+              addMessage('bot', 'Bij een vertraging van 3 uur of meer op je eindbestemming kun je meestal om hulp of compensatie vragen. Vraag nu om een alternatieve vlucht en een officiële reden voor de vertraging.');
+            }
+            finalizeAdvice();
+            return;
+          }
+
+          if (state.issue === 'geannuleerd') {
+            addMessage('user', value);
+            if (['nieuwe-vlucht', 'geld-terug', 'compensatie', 'rechten'].includes(type)) {
+              finalizeAdvice();
+            } else {
+              addMessage('bot', 'Vraag de airline om een nieuwe vlucht, geld terug of een duidelijke uitleg. Houd alles schriftelijk vast en bewaar je bewijs.');
+              finalizeAdvice();
+            }
+            return;
+          }
+
+          if (state.issue === 'overboekt') {
+            addMessage('user', value);
+            addMessage('bot', 'Vraag de airline direct om een alternatieve vlucht of compensatie. Als je het niet krijgt, vraag om een geschreven verklaring en noteer de tijd van de overbooking.');
+            finalizeAdvice();
+            return;
+          }
+
+          if (state.issue === 'bagage') {
+            addMessage('user', value);
+            addMessage('bot', 'Vraag meteen een claimnummer en vraag waar je de bagage kunt volgen. Bewaar je bagagesticker en alle meldingen.');
+            finalizeAdvice();
+            return;
+          }
+
+          addMessage('user', value);
+          addMessage('bot', 'Ik heb je situatie opgevangen. Vraag om een schriftelijke verklaring, noteer de exacte tijd en bewaar je bewijsstukken. Je kunt daarna direct de check op deze site gebruiken voor een volgende, concrete beoordeling.');
+          finalizeAdvice();
+        }
+
+        function startFlow() {
+          setQuestion('Wat is er precies aan de hand op de luchthaven?', [
+            { label: 'Mijn vlucht is vertraagd', value: 'vertraagd' },
+            { label: 'Mijn vlucht is geannuleerd', value: 'geannuleerd' },
+            { label: 'Ik ben overboekt', value: 'overboekt' },
+            { label: 'Ik heb een bagageprobleem', value: 'bagage' },
+            { label: 'Anders', value: 'ander' }
+          ]);
+        }
+
+        sendBtn.addEventListener('click', () => {
+          const value = inputEl.value.trim();
+          if (!value) return;
+          handleAnswer(value);
+          inputEl.value = '';
+        });
+
+        inputEl.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            sendBtn.click();
+          }
+        });
+
+        startFlow();
+      })();
+    </script>
+  </body>
+</html>
