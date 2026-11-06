@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uwvliegrechten.nl/sitemap.xml

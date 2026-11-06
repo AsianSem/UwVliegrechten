@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vergoedingscheck: heb je recht op compensatie? | UwVliegrechten</title><meta name="description" content="Beantwoord een paar vragen en zie binnen een minuut of je recht hebt op compensatie voor je vertraagde, geannuleerde of overboekte vlucht.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="canonical" href="https://uwvliegrechten.nl/vergoedingscheck/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://uwvliegrechten.nl/vergoedingscheck/">
+<meta property="og:title" content="Vergoedingscheck: heb je recht op compensatie? | UwVliegrechten">
+<meta property="og:description" content="Beantwoord een paar vragen en zie binnen een minuut of je recht hebt op compensatie voor je vertraagde, geannuleerde of overboekte vlucht.">
+<link rel="stylesheet" href="../style.css"></head>
+<body><div class="vr-home" data-page="vergoedingscheck"><header class="vr-nav"><div class="vr-wrap"><a class="vr-logo" href="../index.html"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
+<nav class="vr-menu" aria-label="Hoofdmenu"><a href="../index.html">Home</a><a href="../vlucht-vertraagd/index.html">Vertraagd</a><a href="../vlucht-geannuleerd/index.html">Geannuleerd</a><a href="../overboekt/index.html">Overboekt</a><a href="../over/index.html">Over</a><a href="../contact/index.html">Contact</a></nav></div></header><main class="vr-page vr-check-page"><h1>Vergoedingscheck</h1>
+
+<p class="vr-check-intro">Beantwoord een paar korte vragen en zie direct of je vlucht waarschijnlijk in aanmerking komt voor compensatie volgens de Europese regels (EU261).</p>
+<p class="vr-check-privacy">Je antwoorden blijven op dit apparaat en worden niet opgeslagen of verstuurd.</p>
+
+<form class="vr-form vr-check-form" id="check" aria-label="Vluchtgegevens voor de vergoedingscheck">
+  <fieldset>
+    <legend>1. Wat is er gebeurd?</legend>
+    <label><input type="radio" name="situatie" value="vertraagd" required> Mijn vlucht was vertraagd</label>
+    <label><input type="radio" name="situatie" value="geannuleerd"> Mijn vlucht is geannuleerd</label>
+    <label><input type="radio" name="situatie" value="overboekt"> Ik mocht niet mee (overboeking)</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Waar vloog je?</legend>
+    <label><input type="radio" name="route" value="vanEU" required> Vertrek vanaf een luchthaven in de EU, IJsland, Noorwegen of Zwitserland</label>
+    <label><input type="radio" name="route" value="naarEU"> Van buiten de EU naar de EU, met een Europese airline</label>
+    <label><input type="radio" name="route" value="naarEUnietEU"> Van buiten de EU naar de EU, met een niet-Europese airline</label>
+    <label><input type="radio" name="route" value="buiten"> Helemaal buiten de EU</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Hoe ver was de vlucht?</legend>
+    <label><input type="radio" name="afstand" value="kort" required> Tot 1.500 km (bijv. Amsterdam – Londen, Parijs, Berlijn)</label>
+    <label><input type="radio" name="afstand" value="midden"> 1.500 tot 3.500 km, of een vlucht binnen de EU van meer dan 1.500 km (bijv. Amsterdam – Lissabon, Athene, Tenerife)</label>
+    <label><input type="radio" name="afstand" value="lang"> Meer dan 3.500 km buiten de EU (bijv. Amsterdam – New York, Bangkok, Curaçao)</label>
+  </fieldset>
+
+  <fieldset data-voor="vertraagd" hidden>
+    <legend>4. Hoeveel later kwam je aan op je eindbestemming?</legend>
+    <label><input type="radio" name="vertraging" value="minder3"> Minder dan 3 uur</label>
+    <label><input type="radio" name="vertraging" value="3tot4"> 3 tot 4 uur</label>
+    <label><input type="radio" name="vertraging" value="meer4"> 4 uur of meer (of helemaal niet)</label>
+  </fieldset>
+
+  <fieldset data-voor="geannuleerd" hidden>
+    <legend>4. Wanneer hoorde je van de annulering?</legend>
+    <label><input type="radio" name="melding" value="meer14"> 14 dagen of meer voor vertrek</label>
+    <label><input type="radio" name="melding" value="7tot14"> 7 tot 14 dagen voor vertrek</label>
+    <label><input type="radio" name="melding" value="minder7"> Minder dan 7 dagen voor vertrek</label>
+  </fieldset>
+
+  <fieldset data-voor="overboekt" hidden>
+    <legend>4. Heb je je stoel vrijwillig afgestaan?</legend>
+    <label><input type="radio" name="vrijwillig" value="nee"> Nee, ik werd tegen mijn wil geweigerd</label>
+    <label><input type="radio" name="vrijwillig" value="ja"> Ja, ik heb me als vrijwilliger gemeld</label>
+  </fieldset>
+
+  <fieldset data-voor="vertraagd geannuleerd" hidden>
+    <legend>5. Wat was de oorzaak volgens de airline?</legend>
+    <label><input type="radio" name="oorzaak" value="airline"> Technisch probleem, personeelstekort, staking van eigen personeel of operationele reden</label>
+    <label><input type="radio" name="oorzaak" value="extern"> Extreem weer, staking van luchtverkeersleiding of luchthaven, beveiligingsrisico</label>
+    <label><input type="radio" name="oorzaak" value="onbekend"> Weet ik niet</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Met hoeveel personen reisde je op deze boeking?</legend>
+    <label><input type="number" name="personen" min="1" max="20" value="1" style="width:80px"> personen</label>
+  </fieldset>
+
+  <button type="submit" class="vr-btn vr-btn-primary">Bekijk resultaat</button>
+</form>
+
+<div id="resultaat" class="vr-result" hidden aria-live="polite"></div>
+
+<p class="vr-note">Deze check geeft een indicatie op basis van de Europese regels en is geen juridisch advies. Of jij recht hebt op een vergoeding, hangt af van jouw situatie. Sommige links op deze site zijn affiliate-links.</p>
+</main><footer class="vr-foot"><div class="vr-wrap">
+<div class="vr-foot-grid">
+<div class="vr-foot-brand"><a class="vr-logo" href="../index.html"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
+<p>Heldere uitleg over je rechten bij een vertraagde, geannuleerde of overboekte vlucht.</p>
+<a class="vr-foot-email" href="mailto:malesteinsem@gmail.com">malesteinsem@gmail.com</a></div>
+<div><h4>Je rechten</h4><a href="../vlucht-vertraagd/index.html">Vlucht vertraagd</a><a href="../vlucht-geannuleerd/index.html">Vlucht geannuleerd</a><a href="../overboekt/index.html">Overboekt</a><a href="../vergoedingscheck/index.html">Vergoedingscheck</a></div>
+<div><h4>Over de site</h4><a href="../over/index.html">Over</a><a href="../contact/index.html">Contact</a><a href="../privacy/index.html">Privacyverklaring</a></div>
+</div>
+<p class="vr-foot-note">Algemene informatie, geen juridisch advies. Of jij recht hebt op een vergoeding hangt af van jouw situatie. Sommige links zijn affiliate-links. UwVliegrechten is een persoonlijk project en niet verbonden aan een luchthaven of airline.</p>
+</div></footer></div>
+<script>
+(function () {
+  var form = document.getElementById('check');
+  var out = document.getElementById('resultaat');
+  var bedragen = { kort: 250, midden: 400, lang: 600 };
+  var links = {
+    vertraagd: '../vlucht-vertraagd/index.html',
+    geannuleerd: '../vlucht-geannuleerd/index.html',
+    overboekt: '../overboekt/index.html'
+  };
+
+  function waarde(naam) {
+    var el = form.querySelector('input[name="' + naam + '"]:checked');
+    return el ? el.value : null;
+  }
+
+  function toonVragen() {
+    var s = waarde('situatie');
+    form.querySelectorAll('fieldset[data-voor]').forEach(function (fs) {
+      var actief = !!s && fs.dataset.voor.split(' ').indexOf(s) !== -1;
+      fs.hidden = !actief;
+      fs.querySelectorAll('input').forEach(function (i) { i.required = actief; });
+    });
+  }
+
+  function toon(klasse, titel, tekst, bedrag) {
+    var s = waarde('situatie');
+    out.className = 'vr-result ' + klasse;
+    out.innerHTML = '<h2 style="margin-top:0">' + titel + '</h2>' +
+      (bedrag ? '<strong class="vr-big">€' + bedrag.toLocaleString('nl-NL') + '</strong>' : '') +
+      '<p>' + tekst + '</p>' +
+      '<p><a href="' + links[s] + '">Lees meer over je rechten →</a></p>';
+    out.hidden = false;
+    out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  form.addEventListener('change', toonVragen);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var s = waarde('situatie'), route = waarde('route'), afstand = waarde('afstand');
+    var personen = Math.max(1, parseInt(form.personen.value, 10) || 1);
+    var perPersoon = bedragen[afstand];
+
+    if (route === 'naarEUnietEU' || route === 'buiten') {
+      return toon('no', 'Waarschijnlijk geen EU261-compensatie',
+        'Deze vlucht valt waarschijnlijk niet onder de Europese regels. Kijk naar de voorwaarden van de airline of naar de regels van het land van vertrek, die soms ook rechten geven.');
+    }
+
+    if (s === 'vertraagd') {
+      var v = waarde('vertraging');
+      if (v === 'minder3') {
+        return toon('no', 'Geen recht op compensatie',
+          'Voor compensatie moet je minstens 3 uur later aankomen op je eindbestemming. Wel had je mogelijk recht op eten en drinken tijdens het wachten. Bonnetjes kun je terugvragen.');
+      }
+      if (v === '3tot4' && afstand === 'lang') perPersoon = 300;
+    }
+
+    if (s === 'geannuleerd' && waarde('melding') === 'meer14') {
+      return toon('no', 'Geen recht op compensatie',
+        'Hoorde je 14 dagen of meer van tevoren van de annulering, dan heb je geen recht op compensatie. Je kunt wel altijd kiezen tussen je geld terug of een andere vlucht.');
+    }
+
+    if (s === 'overboekt' && waarde('vrijwillig') === 'ja') {
+      return toon('maybe', 'Je krijgt de vergoeding die je hebt afgesproken',
+        'Als vrijwilliger heb je recht op de vergoeding die je met de airline hebt afgesproken, plus de keuze tussen terugbetaling of een andere vlucht. De standaardcompensatie geldt dan niet.');
+    }
+
+    var totaal = perPersoon * personen;
+    var pp = personen > 1 ? ' (€' + perPersoon + ' per persoon × ' + personen + ')' : ' per persoon';
+    var oorzaak = waarde('oorzaak');
+
+    if (s !== 'overboekt' && oorzaak === 'extern') {
+      return toon('maybe', 'Mogelijk geen recht op compensatie',
+        'Bij buitengewone omstandigheden hoeft de airline geen compensatie te betalen. Airlines noemen een oorzaak soms te snel buitengewoon, dus vraag om uitleg. Zonder die omstandigheden zou je recht hebben op €' + totaal + pp + '. Recht op zorg (eten, drinken, hotel) houd je altijd.');
+    }
+
+    var extra = '';
+    if (s === 'geannuleerd') extra = ' Kreeg je een alternatieve vlucht die maar kort afweek van je oorspronkelijke tijden, dan kan dit recht vervallen.';
+    if (oorzaak === 'onbekend') extra += ' Vraag de airline naar de oorzaak: bij buitengewone omstandigheden hoeft ze niet te betalen.';
+
+    toon('ok', 'Je hebt waarschijnlijk recht op compensatie',
+      'Op basis van je antwoorden kun je waarschijnlijk €' + totaal + pp + ' claimen.' + extra + ' Dien je claim in bij de airline of laat een claimbedrijf het voor je regelen.',
+      totaal);
+  });
+})();
+</script>
+</body></html>
