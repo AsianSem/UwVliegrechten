@@ -56,8 +56,10 @@
 .vr-logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
 .vr-logo-mark{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--brand);color:#fff;font-size:1rem;line-height:1}
 .vr-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.vr-menu a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:500;font-size:.95rem;white-space:nowrap;transition:color .15s,background .15s}
+.vr-menu a{position:relative;padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:500;font-size:.95rem;white-space:nowrap;transition:color .18s,background .18s}
+.vr-menu a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
 .vr-menu a:hover{color:var(--ink);background:var(--soft)}
+.vr-menu a:hover::after,.vr-menu a[aria-current="page"]::after{transform:scaleX(1)}
 .vr-menu a[aria-current="page"]{color:var(--brand);background:#eff6ff}
 .vr-nav-cta{padding:9px 16px;border-radius:10px;background:var(--brand);color:#fff;font-weight:600;font-size:.95rem;white-space:nowrap;transition:background .15s}
 .vr-nav-cta:hover{background:var(--brand-d)}
@@ -68,11 +70,11 @@
 .vr-nav-dark .vr-menu a[aria-current="page"]{color:var(--brand);background:#eff6ff}
 .vr-nav-dark .vr-nav-cta{background:var(--brand);color:#fff}
 .vr-nav-dark .vr-nav-cta:hover{background:var(--brand-d)}
-@media (max-width:1100px){
+@media (max-width:1360px){
 .vr-nav .vr-wrap{flex-wrap:wrap;height:auto;gap:10px 16px;padding-top:12px;padding-bottom:8px}
 .vr-nav-cta{margin-left:auto}
-.vr-menu{order:3;margin:0 -12px;width:calc(100% + 24px);overflow-x:auto;scrollbar-width:none}
-.vr-menu::-webkit-scrollbar{display:none}
+.vr-menu{order:3;margin:0 -12px;width:calc(100% + 24px);flex-wrap:wrap;overflow:visible;scrollbar-width:auto}
+.vr-menu a{padding:7px 10px}
 }
 @media (max-width:860px){
 .vr-hero-inner{grid-template-columns:1fr;gap:24px}
@@ -146,6 +148,16 @@
 .vr-foot a{color:var(--muted);margin-right:16px}
 html{scroll-behavior:smooth}
 body{margin:0;overflow-x:hidden}
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:site-page-out .12s ease both}
+::view-transition-new(root){animation:site-page-in .24s cubic-bezier(.2,.7,.2,1) both}
+@keyframes site-page-out{to{opacity:0}}
+@keyframes site-page-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.vr-home[data-page]{animation:site-page-in .36s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){
+::view-transition-old(root),::view-transition-new(root){animation:none}
+.vr-home[data-page]{animation:none!important}
+}
 .vr-box{background:var(--soft);border-left:4px solid var(--brand);border-radius:12px;padding:16px 20px;margin:24px 0}
 .vr-box p{margin:.4rem 0}
 .vr-home table{width:100%;margin:20px 0;border:1px solid #b8cce0;border-radius:12px;border-spacing:0;border-collapse:separate;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(15,23,42,.06);font-size:.95rem;line-height:1.55}
@@ -189,6 +201,26 @@ body{margin:0;overflow-x:hidden}
 .vr-calc-result .vr-label{color:var(--muted)}
 .vr-calc-result strong{font-size:clamp(2.6rem,6vw,3.6rem);line-height:1.05;font-variant-numeric:tabular-nums}
 .vr-calc-result #sub{color:var(--muted);margin-bottom:20px}
+.vr-calc-form{display:grid;gap:18px}
+.vr-calc-field{display:grid;gap:7px;color:var(--ink);font-weight:650}
+.vr-calc-form select,.vr-calc-form input[type=number],.vr-calc-conditional select,.vr-check-form select{width:100%;min-height:46px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;color:var(--ink);font:inherit}
+.vr-calc-form select:focus-visible,.vr-calc-form input:focus-visible,.vr-check-form select:focus-visible{outline:3px solid rgba(37,99,235,.2);outline-offset:1px;border-color:var(--brand)}
+.vr-calc-conditional{min-width:0;margin:0;padding:16px;border:1px solid var(--line);border-radius:12px}
+.vr-calc-conditional legend{padding:0 6px;font-weight:700}
+.vr-calc-conditional>label:not(.vr-calc-field){display:flex;align-items:flex-start;gap:9px;padding:5px 0;color:var(--ink)}
+.vr-calc-conditional input[type=radio]{width:18px;height:18px;flex:0 0 auto;margin:3px 0 0;accent-color:var(--brand)}
+.vr-calc-conditional .vr-hint{min-height:0;margin-bottom:0}
+.vr-calc-form button[type=submit]{justify-self:start;border:0;cursor:pointer;font:inherit}
+.vr-calc-result h3{margin:8px 0;font-size:1.2rem}
+.vr-calc-result p{margin:6px 0}
+.vr-calc-result .vr-calc-total{margin:8px 0;font-size:clamp(2rem,5vw,3rem)}
+.vr-calc-result a{color:var(--brand);font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.vr-official-sources{margin:28px 0;padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.vr-official-sources h2,.vr-official-sources h3{margin:0 0 10px;font-size:1.1rem}
+.vr-official-sources ul,.vr-source-list{margin:0;padding-left:22px}
+.vr-official-sources li,.vr-source-list li{margin:7px 0}
+.vr-official-sources a,.vr-source-list a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+.vr-source-date{margin:12px 0 0;color:var(--muted);font-size:.83rem}
 .vr-btn-solid{background:var(--brand);color:#fff;align-self:flex-start;text-align:center}
 .vr-how{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .vr-how-step{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
@@ -388,7 +420,7 @@ body{margin:0;overflow-x:hidden}
   .vr-home[data-page] .vr-page{margin:0 auto 32px;padding:28px 20px 40px}
 }
 @media (max-width:600px){
-  .vr-home[data-page="home"] .vr-nav-cta{display:none}
+  .vr-home[data-page="home"] .vr-nav-cta{display:inline-flex;align-items:center;justify-content:center}
   .vr-home[data-page="home"] .vr-hero{padding:26px 0 28px}
   .vr-home[data-page="home"] .vr-hero-inner{gap:16px}
   .vr-home[data-page="home"] .vr-home-kicker{margin-bottom:9px;font-size:.68rem}
