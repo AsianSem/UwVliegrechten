@@ -61,7 +61,7 @@
 .vr-menu a:hover{color:var(--ink);background:var(--soft)}
 .vr-menu a:hover::after,.vr-menu a[aria-current="page"]::after{transform:scaleX(1)}
 .vr-menu a[aria-current="page"]{color:var(--brand);background:#eff6ff}
-.vr-nav-cta{padding:9px 16px;border-radius:10px;background:var(--brand);color:#fff;font-weight:600;font-size:.95rem;white-space:nowrap;transition:background .15s}
+.vr-nav-cta{padding:9px 16px;border-radius:10px;background:var(--brand);color:#fff;font-weight:600;font-size:.95rem;white-space:nowrap;transition:background .15s,transform .15s,box-shadow .15s}
 .vr-nav-cta:hover{background:var(--brand-d)}
 .vr-nav-dark{background:rgba(255,255,255,.96);border-bottom-color:var(--line)}
 .vr-nav-dark .vr-logo{color:var(--ink)}
@@ -232,6 +232,21 @@ body{margin:0;overflow-x:hidden}
 .vr-airline-card h3{margin:0 0 8px;font-size:1.2rem}
 .vr-airline-card p{margin:0 0 12px;color:var(--muted);line-height:1.6}
 .vr-airline-card ul{margin:0;padding-left:18px;color:var(--ink);display:grid;gap:8px;line-height:1.5}
+.vr-home-airlines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.vr-home-airline{min-width:0;padding:18px;border:1px solid rgba(148,163,184,.3);border-radius:16px;background:rgba(255,255,255,.82);box-shadow:0 5px 16px rgba(15,23,42,.035);transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s cubic-bezier(.2,.7,.2,1),border-color .22s ease}
+.vr-home-airline:hover{transform:translateY(-3px);border-color:#bfdbfe;box-shadow:0 14px 28px rgba(15,23,42,.09)}
+.vr-home-airline-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:16px}
+.vr-home-airline-mark{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 8px;border-radius:12px;background:#eff6ff;color:#1d4ed8;font-size:.82rem;font-weight:800;letter-spacing:.025em}
+.vr-home-airline-label{padding:5px 8px;border:1px solid #e2e8f0;border-radius:999px;background:#f8fafc;color:#475569;font-size:.68rem;font-weight:700;line-height:1.2}
+.vr-home-airline h3{margin:0 0 6px;font-size:1.02rem;letter-spacing:-.015em}
+.vr-home-airline h3 a{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--ink)}
+.vr-home-airline h3 a span{color:var(--brand);font-size:.92rem;transition:transform .18s ease}
+.vr-home-airline h3 a:hover span{transform:translate(2px,-2px)}
+.vr-home-airline p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+.vr-home-airlines-cta{margin:22px 0 0}
+.vr-home-airlines-cta .vr-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px}
+.vr-home-airlines-cta .vr-btn span{transition:transform .18s ease}
+.vr-home-airlines-cta .vr-btn:hover span{transform:translateX(3px)}
 .vr-faq{display:grid;gap:12px}
 .vr-faq details{background:#fff;border:1px solid var(--line);border-radius:14px;transition:border-color .15s,box-shadow .15s}
 .vr-faq details[open]{border-color:var(--brand);box-shadow:0 6px 20px rgba(37,99,235,.08)}
@@ -481,4 +496,1987 @@ body{margin:0;overflow-x:hidden}
   .vr-delay-page .vr-table{font-size:.85rem}
   .vr-home table th,.vr-home table td{padding:9px 10px}
   .vr-home[data-page="vlucht-vertraagd"] .vr-steps li{padding-left:64px}
+}
+
+:root{
+  --color-white:#fff;
+  --color-canvas:#f6f7f9;
+  --color-text:#1d1d1f;
+  --color-secondary:#5f636b;
+  --color-accent:#2563eb;
+  --color-link:#1d4ed8;
+  --color-hairline:rgba(0,0,0,.08);
+  --radius-card:14px;
+  --radius-control:10px;
+  --radius-label:999px;
+  --shadow-card:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);
+  --shadow-hover:0 8px 24px rgba(0,0,0,.1);
+  --motion-ease:cubic-bezier(.2,.8,.2,1);
+}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;overflow-x:hidden;color:var(--color-text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.6}
+.vr-home{--ink:var(--color-text);--muted:var(--color-secondary);--brand:var(--color-accent);--brand-d:#0066cc;--soft:var(--color-canvas);--line:var(--color-hairline);font-family:inherit;line-height:inherit;color:var(--ink)}
+.vr-wrap{width:min(100% - 48px,1080px);max-width:1080px;padding:0;margin-inline:auto}
+.vr-skip-link{position:fixed;top:8px;left:8px;z-index:2000;padding:12px 18px;border-radius:var(--radius-control);background:var(--color-text);color:#fff;font-size:14px;font-weight:600;transform:translateY(-160%);transition:transform .2s ease}
+.vr-skip-link:focus{transform:translateY(0);outline:3px solid var(--color-accent);outline-offset:3px}
+
+.vr-nav{position:sticky;top:0;z-index:100;min-height:60px;background:rgba(255,255,255,.94);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);border:0;border-bottom:1px solid transparent;transition:min-height .22s var(--motion-ease),box-shadow .22s var(--motion-ease),border-color .22s var(--motion-ease),background .22s var(--motion-ease)}
+.vr-nav.is-scrolled{min-height:54px;border-bottom-color:var(--color-hairline);background:rgba(255,255,255,.97);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.vr-nav .vr-wrap.vr-nav-inner{position:relative;display:flex;align-items:center;flex-wrap:nowrap;gap:24px;width:min(100% - 48px,1080px);height:60px;padding:0;transition:height .22s var(--motion-ease)}
+.vr-nav.is-scrolled .vr-wrap.vr-nav-inner{height:54px}
+.vr-logo{display:inline-flex;align-items:center;gap:8px;color:var(--color-text);font-size:14px;font-weight:650;letter-spacing:-.02em;white-space:nowrap}
+.vr-logo-mark{display:block;width:24px;height:24px;flex:0 0 24px;border-radius:0;background:none;color:var(--color-accent);font-size:0}
+.vr-menu{display:flex;align-items:center;justify-content:center;gap:clamp(2px,1vw,12px);margin:0 auto}
+.vr-menu{order:0;width:auto;overflow:visible;flex-wrap:nowrap}
+.vr-menu a{padding:7px 8px;border-radius:var(--radius-control);color:var(--color-secondary);font-size:13px;font-weight:450;white-space:nowrap;transition:color .18s ease,background .18s ease}
+.vr-menu a::after{display:none}
+.vr-menu a:hover{color:var(--color-text);background:rgba(0,0,0,.045)}
+.vr-menu a[aria-current="page"]{color:var(--color-text);background:rgba(0,0,0,.055)}
+.vr-nav-actions{display:flex;align-items:center;gap:8px}
+.vr-nav-cta{margin:0}
+.vr-nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 15px;border-radius:var(--radius-control);background:var(--color-accent);color:#fff;font-size:12px;font-weight:600;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+.vr-nav-cta:hover{background:#1d4ed8;transform:translateY(-1px)}
+.vr-menu-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;padding:0;border:0;border-radius:var(--radius-control);background:rgba(0,0,0,.055);color:var(--color-text);cursor:pointer}
+.vr-menu-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+.vr-menu-toggle:focus-visible,.vr-nav a:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+@media (max-width:1040px){
+  .vr-nav .vr-wrap.vr-nav-inner{gap:12px}
+  .vr-menu{gap:0}
+  .vr-menu a{padding-inline:6px}
+}
+@media (max-width:950px){
+  .vr-nav .vr-wrap.vr-nav-inner{width:min(100% - 32px,1080px);height:60px;gap:12px}
+  .vr-nav.is-scrolled .vr-wrap.vr-nav-inner{height:54px}
+  .vr-menu-toggle{display:none}
+  html.js-ready .vr-menu-toggle{display:inline-flex}
+  .vr-nav-actions{margin-left:auto}
+  .vr-menu{display:grid;order:0;justify-content:stretch;gap:2px;width:auto;margin:0;overflow:visible;flex-wrap:nowrap}
+  .vr-menu a{padding:12px 14px;border-radius:12px;font-size:15px}
+  html:not(.js-ready) .vr-nav .vr-wrap.vr-nav-inner{height:auto;flex-wrap:wrap;padding-block:10px}
+  html:not(.js-ready) .vr-menu{order:3;width:100%;padding:8px 0}
+  html.js-ready .vr-menu{position:absolute;top:calc(100% + 1px);right:-8px;left:-8px;z-index:101;padding:10px;border:1px solid var(--color-hairline);border-radius:0 0 20px 20px;background:rgba(255,255,255,.96);box-shadow:0 18px 38px rgba(0,0,0,.1);transform:translateY(-8px);transition:opacity .2s var(--motion-ease),transform .2s var(--motion-ease),visibility .2s;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  html.js-ready .vr-menu[data-menu-open="false"]{visibility:hidden;opacity:0;pointer-events:none}
+  html.js-ready .vr-menu[data-menu-open="true"]{visibility:visible;opacity:1;transform:translateY(0)}
+}
+@media (max-width:420px){
+  .vr-nav .vr-wrap.vr-nav-inner{width:calc(100% - 28px);gap:8px}
+  .vr-logo{gap:5px;font-size:13px}
+  .vr-logo-mark{width:21px;height:21px;flex-basis:21px}
+  .vr-nav-actions{gap:6px}
+  .vr-nav-cta{min-height:44px;padding:0 11px;font-size:11px}
+  .vr-menu-toggle{width:44px;height:44px}
+}
+
+.vr-foot{padding:36px 0 22px;border:0;background:var(--color-canvas);color:var(--color-secondary);font-size:13px}
+.vr-foot-grid{display:grid;grid-template-columns:minmax(240px,1.5fr) repeat(2,minmax(150px,1fr));gap:40px;padding-bottom:24px}
+.vr-foot-brand p{max-width:340px;margin:14px 0 10px;color:var(--color-secondary);font-size:13px}
+.vr-foot .vr-logo{color:var(--color-text)}
+.vr-foot .vr-foot-email{margin:0;color:var(--color-link);font-size:13px}
+.vr-foot-grid>div:not(.vr-foot-brand){display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.vr-foot h2{margin:2px 0 4px;color:var(--color-text);font-size:12px;font-weight:650}
+.vr-foot a{margin:0;color:var(--color-secondary);font-size:12px;transition:color .15s ease}
+.vr-foot a:hover{color:var(--color-text)}
+.vr-foot-note{margin:0;padding-top:18px;border-top:1px solid var(--color-hairline);color:var(--color-secondary);font-size:12px;line-height:1.6}
+@media (max-width:640px){
+  .vr-wrap{width:calc(100% - 36px)}
+  .vr-foot{padding-top:36px}
+  .vr-foot-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .vr-foot-brand{grid-column:1/-1}
+  .vr-foot-note{font-size:11px}
+}
+
+.vr-home[data-page="home"]{min-height:100vh;background:#fff;background-image:none}
+.vr-home[data-page="home"] .vr-hero{padding:clamp(76px,10vw,128px) 0 68px;border:0;background:#fff}
+.vr-home[data-page="home"] .vr-hero-inner{display:flex;flex-direction:column;align-items:center;gap:0}
+.vr-home[data-page="home"] .vr-hero-copy{max-width:860px;margin:0 auto 44px;text-align:center}
+.vr-home[data-page="home"] .vr-home-kicker{display:inline-block;margin:0 0 18px;padding:0;border:0;background:none;color:var(--color-secondary);font-size:13px;font-weight:600;letter-spacing:.01em;text-transform:none}
+.vr-home[data-page="home"] .vr-hero h1{max-width:850px;margin:0 auto 20px;color:var(--color-text);font-size:clamp(2.5rem,7vw,5rem);font-weight:600;letter-spacing:-.055em;line-height:1.04}
+.vr-home[data-page="home"] .vr-hero p{max-width:700px;margin:0 auto 26px;color:var(--color-secondary);font-size:clamp(17px,2vw,20px);line-height:1.48}
+.vr-home[data-page="home"] .vr-btns{justify-content:center;align-items:center;gap:14px}
+.vr-home[data-page="home"] .vr-btn{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 23px;border-radius:var(--radius-control);font-size:15px;font-weight:550}
+.vr-home[data-page="home"] .vr-btn-primary{background:var(--color-accent);color:#fff}
+.vr-home[data-page="home"] .vr-btn-primary:hover{background:#0066cc}
+.vr-home[data-page="home"] .vr-btn-ghost{padding:0 6px;border:0;background:none;color:var(--color-link)}
+.vr-home[data-page="home"] .vr-btn-ghost span{margin-left:4px}
+.vr-home[data-page="home"] .vr-btn-ghost:hover{background:none;color:#004fa3}
+.vr-home[data-page="home"] .vr-btn-emergency{display:inline-flex;width:auto;min-height:0;align-items:center;gap:8px;margin:18px 0 0;padding:9px 14px;border:0;border-radius:var(--radius-control);background:var(--color-canvas);color:var(--color-secondary);font-size:13px;font-weight:500;box-shadow:none;transition:background .18s ease,color .18s ease}
+.vr-home[data-page="home"] .vr-btn-emergency:hover{background:#ebebed;color:var(--color-text)}
+.vr-home[data-page="home"] .vr-btn-emergency svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.vr-home[data-page="home"] .vr-hero-media{width:100%;max-width:1120px;min-height:0;aspect-ratio:2.08/1;margin:0 auto;border-radius:var(--radius-card);background:#f5f5f7;box-shadow:none}
+.vr-home[data-page="home"] .vr-hero-media::after{content:none}
+.vr-home[data-page="home"] .vr-hero-media img{width:100%;height:100%;object-fit:cover}
+.vr-home[data-page="home"] .vr-hero-stat{display:flex;align-items:baseline;justify-content:center;gap:12px;margin:24px auto 0}
+.vr-home[data-page="home"] .vr-hero-stat strong{color:var(--color-text);font-size:clamp(2rem,4.2vw,3rem);font-weight:600;letter-spacing:-.055em;line-height:1}
+.vr-home[data-page="home"] .vr-hero-stat span{color:var(--color-secondary);font-size:15px}
+.vr-home[data-page="home"] .vr-sec{padding:clamp(72px,10vw,132px) 0}
+.vr-home[data-page="home"] .vr-sec-tight{padding:clamp(72px,9vw,112px) 0}
+.vr-home[data-page="home"] .vr-sec-tight,.vr-home[data-page="home"] .vr-sec.vr-soft,.vr-home[data-page="home"] section#airlines{background:var(--color-canvas)}
+.vr-home[data-page="home"] .vr-sec:not(.vr-sec-tight):not(.vr-soft):not(#airlines){background:#fff}
+.vr-home[data-page="home"] .vr-sec h2{max-width:850px;margin:0 auto 40px;color:var(--color-text);font-size:clamp(2rem,4.5vw,3.5rem);font-weight:600;letter-spacing:-.045em;line-height:1.06}
+.vr-home[data-page="home"] .vr-head{max-width:760px;margin:0 auto 38px;text-align:center}
+.vr-home[data-page="home"] .vr-head h2{margin:0 auto 14px}
+.vr-home[data-page="home"] .vr-eyebrow{margin-bottom:10px;color:var(--color-secondary);font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:none}
+.vr-home[data-page="home"] .vr-sub{max-width:650px;margin:0 auto;color:var(--color-secondary);font-size:17px;line-height:1.5}
+.vr-home[data-page="home"] .vr-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.vr-home[data-page="home"] .vr-card{min-height:260px;padding:28px;border:0;border-radius:var(--radius-card);background:#fff;color:var(--color-text);box-shadow:none;transition:transform .25s var(--motion-ease),background .25s ease}
+.vr-home[data-page="home"] .vr-card:hover{transform:translateY(-4px);background:#fff}
+.vr-home[data-page="home"] .vr-card-icon{display:inline-flex;width:48px;height:48px;align-items:center;justify-content:center;margin:0 0 24px;border-radius:15px;background:#fff;color:var(--color-accent)}
+.vr-home[data-page="home"] .vr-card-icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.vr-home[data-page="home"] .vr-card h3{margin:0 0 10px;font-size:22px;font-weight:600;letter-spacing:-.025em}
+.vr-home[data-page="home"] .vr-card p{margin:0 0 18px;color:var(--color-secondary);font-size:15px;line-height:1.5}
+.vr-home[data-page="home"] .vr-more{color:var(--color-link);font-size:14px;font-weight:500}
+.vr-home[data-page="home"] .vr-more span{display:inline-block;transition:transform .18s ease}
+.vr-home[data-page="home"] .vr-card:hover .vr-more span{transform:translateX(3px)}
+
+.vr-home[data-page="home"] .vr-calc{display:grid;width:min(100%,760px);grid-template-columns:minmax(0,1fr);margin:0 auto;overflow:hidden;border:0;border-radius:var(--radius-card);background:#fff;box-shadow:var(--shadow-card)}
+.vr-home[data-page="home"] .vr-calc-controls{gap:22px;padding:clamp(24px,5vw,48px)}
+.vr-home[data-page="home"] .vr-calc-field{gap:9px;color:var(--color-text);font-size:14px;font-weight:600}
+.vr-home[data-page="home"] .vr-calc-field>label{font-weight:600}
+.vr-home[data-page="home"] .vr-calc-form select,.vr-home[data-page="home"] .vr-calc-form input[type=number],.vr-home[data-page="home"] .vr-calc-conditional select{min-height:50px;padding:11px 14px;border:1px solid var(--color-hairline);border-radius:14px;background-color:#fff;color:var(--color-text);font:inherit;font-size:15px}
+.vr-home[data-page="home"] .vr-calc-form select:focus-visible,.vr-home[data-page="home"] .vr-calc-form input:focus-visible,.vr-home[data-page="home"] .vr-calc-conditional select:focus-visible{outline:3px solid rgba(0,113,227,.22);outline-offset:2px;border-color:var(--color-accent)}
+.vr-home[data-page="home"] .vr-calc-conditional{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:0;padding:18px;border:1px solid var(--color-hairline);border-radius:18px}
+.vr-home[data-page="home"] .vr-calc-conditional[hidden]{display:none}
+.vr-home[data-page="home"] .vr-calc-conditional legend{grid-column:1/-1;padding:0 6px;color:var(--color-text);font-size:14px;font-weight:600}
+.vr-home[data-page="home"] .vr-calc-conditional>label:not(.vr-calc-field){min-height:48px;align-items:center;padding:10px 12px;border:1px solid var(--color-hairline);border-radius:12px;background:#fff;color:var(--color-text);font-size:13px;line-height:1.4;cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.vr-home[data-page="home"] .vr-calc-conditional>label:not(.vr-calc-field):has(input:checked){border-color:var(--color-accent);background:rgba(0,113,227,.055)}
+.vr-home[data-page="home"] .vr-calc-conditional input[type=radio]{accent-color:var(--color-accent)}
+.vr-home[data-page="home"] .vr-calc-conditional .vr-hint{grid-column:1/-1;font-size:13px;line-height:1.5}
+.vr-home[data-page="home"] .vr-calc-stepper{display:inline-flex;width:max-content;align-items:center;overflow:hidden;border:1px solid var(--color-hairline);border-radius:var(--radius-control);background:#fff}
+.vr-home[data-page="home"] .vr-calc-stepper button{width:44px;height:46px;border:0;background:#f5f5f7;color:var(--color-text);font:inherit;font-size:20px;cursor:pointer;transition:background .15s ease}
+.vr-home[data-page="home"] .vr-calc-stepper button:hover{background:#e8e8ea}
+.vr-home[data-page="home"] .vr-calc-stepper input[type=number]{width:64px;min-height:46px;padding:0;border:0;border-radius:0;text-align:center;font-size:16px;font-variant-numeric:tabular-nums}
+.vr-home[data-page="home"] .vr-calc-form button[type=submit]{min-height:48px;padding:0 22px;border:0;border-radius:var(--radius-control);background:var(--color-accent);color:#fff;font-weight:600;cursor:pointer}
+.vr-home[data-page="home"] .vr-calc-result{min-height:180px;padding:32px clamp(24px,5vw,48px);border:0;border-top:1px solid var(--color-hairline);background:var(--color-canvas)}
+.vr-home[data-page="home"] .vr-calc-result .vr-label{color:var(--color-secondary);font-size:12px}
+.vr-home[data-page="home"] .vr-calc-result h3{font-size:17px;font-weight:600}
+.vr-home[data-page="home"] .vr-calc-result p{color:var(--color-secondary);font-size:14px;line-height:1.5}
+.vr-home[data-page="home"] .vr-calc-result .vr-calc-total{color:var(--color-text);font-size:clamp(3.5rem,10vw,6rem);font-weight:600;letter-spacing:-.06em;line-height:1.05;transition:opacity .25s ease,transform .25s var(--motion-ease)}
+.vr-home[data-page="home"] .vr-note{max-width:760px;margin:22px auto 0;color:var(--color-secondary);font-size:12px;line-height:1.6}
+.vr-home[data-page="home"] .vr-note a,.vr-home[data-page="home"] .vr-official-sources a{color:var(--color-link)}
+.vr-home[data-page="home"] .vr-official-sources{width:min(100%,760px);margin:28px auto 0;padding:22px 24px;border:0;border-radius:18px;background:var(--color-canvas);box-shadow:none}
+.vr-home[data-page="home"] .vr-official-sources h3{font-size:14px;font-weight:600}
+.vr-home[data-page="home"] .vr-official-sources li{color:var(--color-secondary);font-size:13px}
+.vr-home[data-page="home"] .vr-official-sources a::after{content:" ↗";font-size:.82em;text-decoration:none}
+.vr-home[data-page="home"] .vr-source-date{font-size:11px}
+
+.vr-home[data-page="home"] .vr-how{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.vr-home[data-page="home"] .vr-how-step{padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.vr-home[data-page="home"] .vr-how-step:hover{transform:none;box-shadow:none}
+.vr-home[data-page="home"] .vr-how-num{display:block;width:auto;height:auto;margin:0 0 20px;padding:0;border:0;border-radius:0;background:none;color:rgba(29,29,31,.18);font-size:clamp(3.5rem,8vw,6rem);font-weight:500;letter-spacing:-.07em;line-height:1}
+.vr-home[data-page="home"] .vr-how-step h3{margin:0 0 8px;font-size:20px;font-weight:600;letter-spacing:-.02em}
+.vr-home[data-page="home"] .vr-how-step p{max-width:320px;color:var(--color-secondary);font-size:15px;line-height:1.55}
+
+.vr-home[data-page="home"] .vr-home-airlines{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.vr-home[data-page="home"] .vr-home-airline{padding:22px;border:1px solid var(--color-hairline);border-radius:20px;background:#fff;box-shadow:none}
+.vr-home[data-page="home"] .vr-home-airline:hover{transform:translateY(-3px);border-color:rgba(0,102,204,.25);box-shadow:var(--shadow-card)}
+.vr-home[data-page="home"] .vr-home-airline-mark{min-width:40px;height:40px;border-radius:13px;background:var(--color-canvas);color:var(--color-text);font-size:12px}
+.vr-home[data-page="home"] .vr-home-airline-label{border:0;background:var(--color-canvas);color:var(--color-secondary);font-size:10px}
+.vr-home[data-page="home"] .vr-home-airline h3{font-size:18px;font-weight:600}
+.vr-home[data-page="home"] .vr-home-airline h3 a{color:var(--color-text)}
+.vr-home[data-page="home"] .vr-home-airline h3 a span{color:var(--color-link)}
+.vr-home[data-page="home"] .vr-home-airline p{font-size:13px}
+.vr-home[data-page="home"] .vr-home-airlines-cta{margin:28px 0 0;text-align:center}
+.vr-home[data-page="home"] .vr-home-airlines-cta .vr-btn{min-height:44px;padding:0 18px;background:transparent;color:var(--color-link);font-size:14px}
+.vr-home[data-page="home"] .vr-home-airlines-cta .vr-btn:hover{background:rgba(0,102,204,.06)}
+
+.vr-home[data-page="home"] .vr-faq{max-width:760px;margin:0 auto;gap:0}
+.vr-home[data-page="home"] .vr-faq details,.vr-home[data-page="home"] .vr-faq details[open]{border:0;border-bottom:1px solid var(--color-hairline);border-radius:0;background:transparent;box-shadow:none}
+.vr-home[data-page="home"] .vr-faq summary{min-height:60px;padding:18px 48px 18px 0;color:var(--color-text);font-size:17px;font-weight:550}
+.vr-home[data-page="home"] .vr-faq summary::after{right:4px;width:28px;height:28px;background:transparent;color:var(--color-secondary);font-size:24px;font-weight:300;transition:transform .25s var(--motion-ease),color .2s ease}
+.vr-home[data-page="home"] .vr-faq details[open] summary::after{transform:translateY(-50%) rotate(45deg);background:transparent;color:var(--color-accent)}
+.vr-home[data-page="home"] .vr-faq details p{max-width:680px;padding:0 0 20px;color:var(--color-secondary);font-size:15px;line-height:1.55}
+.vr-home[data-page="home"] .vr-cta2{max-width:1120px;padding:clamp(48px,8vw,96px) 28px;border:0;border-radius:var(--radius-card);background:#1d1d1f;color:#fff;text-align:center}
+.vr-home[data-page="home"] .vr-cta2 h2{max-width:760px;margin:0 auto 16px;color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:600;letter-spacing:-.045em;line-height:1.06}
+.vr-home[data-page="home"] .vr-cta2 p{max-width:590px;margin:0 auto 24px;color:#b8b8bd;font-size:17px}
+.vr-home[data-page="home"] .vr-cta2 .vr-btn{min-height:48px;padding:0 22px;border-radius:var(--radius-control);background:var(--color-accent);color:#fff}
+.vr-home[data-page="home"] .vr-cta2 .vr-btn:hover{background:#0066cc}
+.vr-home[data-page="home"] .vr-foot{background:var(--color-canvas)}
+.vr-home[data-page="home"] a:focus-visible,.vr-home[data-page="home"] button:focus-visible,.vr-home[data-page="home"] summary:focus-visible{outline:3px solid rgba(0,102,204,.65);outline-offset:3px}
+
+[data-reveal]{transition:opacity .8s var(--motion-ease),translate .8s var(--motion-ease)}
+[data-reveal-pending]{opacity:0;translate:0 24px}
+[data-reveal].is-revealed{opacity:1;translate:0 0}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-reveal],[data-reveal-pending],[data-reveal].is-revealed{opacity:1;translate:none;transition:none}
+  .vr-nav .vr-menu, .vr-home[data-page="home"] .vr-hero-media img{transition:none}
+}
+@media (max-width:760px){
+  .vr-home[data-page="home"] .vr-hero{padding:68px 0 56px}
+  .vr-home[data-page="home"] .vr-hero-copy{margin-bottom:32px}
+  .vr-home[data-page="home"] .vr-hero-media{aspect-ratio:1.35/1;border-radius:22px}
+  .vr-home[data-page="home"] .vr-hero-stat{align-items:flex-start;flex-direction:column;gap:4px;margin-top:18px}
+  .vr-home[data-page="home"] .vr-grid,.vr-home[data-page="home"] .vr-how{grid-template-columns:1fr}
+  .vr-home[data-page="home"] .vr-card{min-height:0;padding:26px}
+  .vr-home[data-page="home"] .vr-card-icon{margin-bottom:16px}
+  .vr-home[data-page="home"] .vr-how{gap:36px}
+  .vr-home[data-page="home"] .vr-how-num{margin-bottom:12px;font-size:4rem}
+  .vr-home[data-page="home"] .vr-home-airlines{grid-auto-columns:minmax(250px,78%);grid-auto-flow:column;grid-template-columns:none;overflow-x:auto;padding:2px 0 14px;scroll-padding-inline:1px;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
+  .vr-home[data-page="home"] .vr-home-airline{scroll-snap-align:start}
+  .vr-home[data-page="home"] .vr-home-airlines::-webkit-scrollbar{height:5px}
+  .vr-home[data-page="home"] .vr-home-airlines::-webkit-scrollbar-thumb{border-radius:9px;background:rgba(0,0,0,.2)}
+}
+@media (max-width:520px){
+  .vr-wrap{width:calc(100% - 32px)}
+  .vr-home[data-page="home"] .vr-hero{padding:58px 0 48px}
+  .vr-home[data-page="home"] .vr-hero h1{font-size:clamp(2.5rem,12vw,3.4rem)}
+  .vr-home[data-page="home"] .vr-hero p{font-size:16px}
+  .vr-home[data-page="home"] .vr-btns{gap:12px}
+  .vr-home[data-page="home"] .vr-btn{min-height:46px;padding-inline:18px;font-size:14px}
+  .vr-home[data-page="home"] .vr-btn-emergency{max-width:100%;font-size:12px}
+  .vr-home[data-page="home"] .vr-sec{padding:72px 0}
+  .vr-home[data-page="home"] .vr-sec h2{margin-bottom:28px}
+  .vr-home[data-page="home"] .vr-calc{border-radius:20px}
+  .vr-home[data-page="home"] .vr-calc-controls{padding:22px 18px}
+  .vr-home[data-page="home"] .vr-calc-result{padding:24px 20px}
+  .vr-home[data-page="home"] .vr-cta2{border-radius:22px;padding:54px 22px}
+}
+
+body::before{content:"";position:fixed;inset:0 0 auto;z-index:1000;height:2px;transform:scaleX(0);transform-origin:left;background:var(--color-accent);pointer-events:none}
+.vr-hero-media img{transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.vr-hero-media:hover img{transform:scale(1.035)}
+.vr-logo-mark{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.vr-logo:hover .vr-logo-mark{transform:rotate(-8deg)}
+.vr-nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(37,99,235,.2)}
+.vr-card,.vr-how-step,.vr-airline-card,.vr-home-airline,.vr-contact-airline,.vr-directory-airline,.vr-directory-group,.vr-ai-shell,.vr-calc,.vr-faq details,.vr-steps li,.vr-official-sources,.vr-cta2{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s cubic-bezier(.2,.7,.2,1),border-color .22s ease}
+.vr-how-step:hover,.vr-airline-card:hover,.vr-contact-airline:hover,.vr-directory-airline:hover,.vr-directory-group:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,23,42,.08)}
+
+@supports (animation-timeline:scroll()){
+  body::before{animation:site-scroll-progress linear both;animation-timeline:scroll(root block)}
+  @keyframes site-scroll-progress{to{transform:scaleX(1)}}
+}
+@supports (animation-timeline:view()){
+  .vr-card,.vr-how-step,.vr-airline-card,.vr-home-airline,.vr-contact-airline,.vr-directory-airline,.vr-directory-group,.vr-steps li,.vr-official-sources,.vr-faq details,.vr-page>h2,.vr-page>.vr-box,.vr-page>.vr-result{
+    animation:site-scroll-reveal linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 28%;
+  }
+  @keyframes site-scroll-reveal{
+    from{opacity:0;translate:0 16px}
+    to{opacity:1;translate:0 0}
+  }
+}
+@media (min-width:861px) and (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:scroll()){
+    .vr-home[data-page="home"] .vr-hero-media img{
+      scale:1.02;
+      animation:site-hero-drift linear both;
+      animation-timeline:scroll(root block);
+      animation-range:0% 32%;
+    }
+    @keyframes site-hero-drift{
+      from{translate:0 -2px;scale:1.02}
+      to{translate:0 4px;scale:1.04}
+    }
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  body::before{animation:none!important;transform:scaleX(0)}
+  .vr-home[data-page]{animation:none!important}
+  .vr-btn:hover,.vr-card:hover,.vr-home-airline:hover,.vr-logo:hover .vr-logo-mark,.vr-hero-media:hover img{transform:none!important}
+  .vr-hero-media img{transition:none!important}
+  .vr-logo-mark{transition:none!important}
+  .vr-nav-cta:hover{transform:none;box-shadow:none}
+  .vr-how-step:hover,.vr-airline-card:hover,.vr-contact-airline:hover,.vr-directory-airline:hover,.vr-directory-group:hover{transform:none;box-shadow:none}
+  .vr-card,.vr-how-step,.vr-airline-card,.vr-home-airline,.vr-contact-airline,.vr-directory-airline,.vr-directory-group,.vr-steps li,.vr-official-sources,.vr-faq details,.vr-page>h2,.vr-page>.vr-box,.vr-page>.vr-result{animation:none!important}
+}
+
+/* Shared editorial styling for the non-homepage content pages. */
+.vr-home[data-page]:not([data-page="home"]){
+  min-height:100vh;
+  background:#fff;
+  background-image:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page{
+  width:min(100%,1000px);
+  max-width:1000px;
+  margin:0 auto;
+  padding:clamp(52px,8vw,96px) 24px clamp(76px,10vw,120px);
+  background:transparent;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page h1{
+  max-width:850px;
+  margin:0 0 20px;
+  color:var(--color-text);
+  font-size:clamp(2.5rem,6vw,4.35rem);
+  font-weight:600;
+  letter-spacing:-.05em;
+  line-height:1.04;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page h2{
+  color:var(--color-text);
+  font-size:clamp(1.55rem,3vw,2rem);
+  font-weight:600;
+  letter-spacing:-.035em;
+  line-height:1.15;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page>h2{
+  margin:58px 0 18px;
+  padding-top:26px;
+  border-top:1px solid var(--color-hairline);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page p,
+.vr-home[data-page]:not([data-page="home"]) .vr-page li{
+  color:var(--color-secondary);
+  font-size:16px;
+  line-height:1.7;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page>p,
+.vr-home[data-page]:not([data-page="home"]) .vr-page>ul,
+.vr-home[data-page]:not([data-page="home"]) .vr-page>ol{
+  max-width:72ch;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page strong{
+  color:var(--color-text);
+  font-weight:600;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page a:not(.vr-btn){
+  color:var(--color-link);
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page a:not(.vr-btn):hover{
+  color:#004fa3;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-breadcrumbs{
+  display:flex;
+  width:max-content;
+  max-width:100%;
+  margin:0 0 28px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:none;
+  color:var(--color-secondary);
+  font-size:13px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-breadcrumbs a{
+  color:var(--color-secondary);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-breadcrumbs a:hover{
+  color:var(--color-link);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-kicker,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-kicker{
+  margin:0 0 10px;
+  color:var(--color-secondary);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
+  text-transform:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-box,
+.vr-home[data-page]:not([data-page="home"]) .vr-official-sources,
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-help{
+  margin:30px 0;
+  padding:24px 28px;
+  border:0;
+  border-radius:var(--radius-card);
+  background:var(--color-canvas);
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-official-sources h2,
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-help h2{
+  margin:0 0 14px;
+  padding:0;
+  border:0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-note,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-source-date,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-directory-source,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-contact-sources{
+  color:var(--color-secondary);
+  font-size:13px;
+  line-height:1.6;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-note{
+  max-width:72ch;
+  margin-top:28px;
+  padding:0;
+  border:0;
+  background:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn{
+  display:inline-flex;
+  min-height:48px;
+  align-items:center;
+  justify-content:center;
+  padding:0 22px;
+  border:0;
+  border-radius:var(--radius-control);
+  font-size:14px;
+  font-weight:600;
+  transition:background .18s ease,transform .18s ease;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn-primary{
+  background:var(--color-accent);
+  color:#fff;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn-primary:hover{
+  background:#0066cc;
+  color:#fff;
+  transform:translateY(-1px);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn-secondary{
+  border:1px solid var(--color-hairline);
+  background:var(--color-canvas);
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn-secondary:hover{
+  background:#ebebed;
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-header{
+  gap:20px;
+  margin:0 0 20px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-logo{
+  width:64px;
+  height:64px;
+  border:0;
+  border-radius:20px;
+  background:var(--color-canvas)!important;
+  box-shadow:none;
+  color:var(--color-text)!important;
+  font-size:1rem;
+  letter-spacing:0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-header h1{
+  margin:0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-actions{
+  gap:10px;
+  margin:22px 0 30px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary{
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:22px;
+  margin:28px 0 20px;
+  padding:24px;
+  border:0;
+  border-radius:var(--radius-card);
+  background:var(--color-canvas);
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary>div{
+  border-color:var(--color-hairline);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary-label{
+  color:var(--color-secondary);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary>div strong{
+  color:var(--color-text);
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  letter-spacing:-.045em;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary>div>span:last-child,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary>p{
+  color:var(--color-secondary);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-nav{
+  gap:8px;
+  margin:0 0 30px;
+  padding:14px 0 22px;
+  border-color:var(--color-hairline);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-nav>span{
+  color:var(--color-secondary);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-nav a{
+  border:0;
+  background:var(--color-canvas);
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-nav a:hover{
+  background:#ebebed;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-steps{
+  gap:0;
+  margin:22px 0 28px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-steps li{
+  min-height:0;
+  padding:18px 20px 18px 68px;
+  border:0;
+  border-bottom:1px solid var(--color-hairline);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-steps li::before{
+  left:8px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--color-canvas);
+  color:var(--color-text);
+  font-size:14px;
+  font-weight:600;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table{
+  margin:24px 0 30px;
+  border:1px solid var(--color-hairline);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:none;
+  font-size:15px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table th,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table td{
+  padding:14px 16px;
+  border-bottom:1px solid var(--color-hairline);
+  color:var(--color-text);
+  text-align:left;
+  vertical-align:top;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table th{
+  background:var(--color-canvas);
+  font-size:13px;
+  font-weight:600;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table tr:nth-child(even) td,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table tr:hover td{
+  background:#fff;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table tr:last-child td{
+  border-bottom:0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airlines{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin:28px 0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-group,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airline{
+  border:0;
+  border-radius:var(--radius-card);
+  background:var(--color-canvas);
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline{
+  padding:24px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline h2,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airline h3{
+  margin:0 0 12px;
+  color:var(--color-text);
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline p,
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline li,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airline p{
+  font-size:14px;
+  line-height:1.55;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline ul{
+  gap:8px;
+  padding-left:19px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-groups{
+  gap:14px;
+  margin:30px 0 42px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-group{
+  grid-template-columns:48px minmax(0,1fr) 20px;
+  min-height:96px;
+  padding:20px;
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-group:hover,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airline:hover,
+.vr-home[data-page]:not([data-page="home"]) .vr-contact-airline:hover{
+  background:#efeff1;
+  box-shadow:none;
+  transform:translateY(-2px);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-group small{
+  color:var(--color-secondary);
+  font-size:13px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-mark,
+.vr-home[data-page]:not([data-page="home"]) .vr-airline-mark{
+  border:0;
+  background:#fff!important;
+  color:var(--color-text)!important;
+  font-size:12px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-arrow{
+  color:var(--color-secondary);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-member-list li,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-existing li{
+  border-color:var(--color-hairline);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-member-list strong{
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-member-list span,
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-existing span{
+  color:var(--color-secondary);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airlines{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-directory-airline{
+  padding:20px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-faq details{
+  border-color:var(--color-hairline);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-faq summary{
+  min-height:58px;
+  color:var(--color-text);
+  font-size:16px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-faq details[open] summary::after{
+  background:var(--color-canvas);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-intro{
+  max-width:70ch;
+  color:var(--color-secondary);
+  font-size:17px;
+  line-height:1.6;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-privacy{
+  border-radius:var(--radius-control);
+  background:var(--color-canvas);
+  color:var(--color-secondary);
+  font-size:13px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form{
+  gap:12px;
+  margin:30px 0;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form fieldset{
+  padding:22px 24px 24px;
+  border:0;
+  border-radius:22px;
+  background:var(--color-canvas);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form legend{
+  padding:0 0 10px;
+  color:var(--color-text);
+  font-size:17px;
+  font-weight:600;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form fieldset label:has(input[type="radio"]){
+  min-height:48px;
+  align-items:center;
+  margin:6px 0;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  color:var(--color-text);
+  font-size:15px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form fieldset label:has(input[type="radio"]:checked){
+  border-color:var(--color-accent);
+  background:rgba(0,113,227,.055);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form input[type="radio"]{
+  accent-color:var(--color-accent);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form>button[type="submit"]{
+  justify-self:start;
+  min-width:190px;
+  border-radius:var(--radius-control);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-result{
+  border:0;
+  border-radius:22px;
+  background:var(--color-canvas);
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-result.ok,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-result.no,
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-result.maybe{
+  border:0;
+  background:var(--color-canvas);
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page .vr-result strong.vr-big{
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-shell{
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-card);
+  background:#fff;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-header{
+  min-height:62px;
+  padding:16px 22px;
+  border-bottom:1px solid var(--color-hairline);
+  background:var(--color-canvas);
+  color:var(--color-text);
+  font-size:14px;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-status-dot{
+  background:var(--color-accent);
+  box-shadow:0 0 0 4px rgba(0,113,227,.1);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-chat{
+  background:#fff;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-chat-bot,
+.vr-home[data-page]:not([data-page="home"]) .vr-chat-user{
+  border:0;
+  background:var(--color-canvas);
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-choice{
+  border-color:var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:#fff;
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-choice:hover{
+  border-color:var(--color-accent);
+  background:rgba(0,113,227,.055);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-input-wrap input{
+  min-height:48px;
+  border-color:var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:var(--color-canvas);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-input-wrap button{
+  min-height:48px;
+  border-radius:var(--radius-control);
+  background:var(--color-accent);
+  box-shadow:none;
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-ai-result{
+  border:0;
+  border-radius:18px;
+  background:var(--color-canvas);
+  color:var(--color-text);
+}
+.vr-home[data-page]:not([data-page="home"]) .vr-page :focus-visible{
+  outline:3px solid rgba(0,102,204,.65);
+  outline-offset:3px;
+}
+@media (max-width:760px){
+  .vr-home[data-page]:not([data-page="home"]) .vr-page{
+    padding:38px 20px 72px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page>h2{
+    margin-top:42px;
+    padding-top:22px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary{
+    grid-template-columns:minmax(0,1fr);
+    gap:12px;
+    padding:20px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary>div{
+    padding:0;
+    border:0;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-delay-summary .vr-btn{
+    justify-self:start;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-contact-airlines,
+  .vr-home[data-page]:not([data-page="home"]) .vr-directory-airlines{
+    grid-template-columns:1fr;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-directory-groups{
+    grid-template-columns:1fr;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-check-form fieldset{
+    padding:18px 16px;
+  }
+}
+@media (max-width:860px){
+  .vr-home[data-page]:not([data-page="home"]) .vr-member-list{
+    grid-template-columns:1fr;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-member-list li{
+    min-width:0;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-member-list strong,
+  .vr-home[data-page]:not([data-page="home"]) .vr-member-list a{
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}
+@media (max-width:520px){
+  .vr-home[data-page]:not([data-page="home"]) .vr-page h1{
+    font-size:clamp(2.2rem,11vw,3rem);
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page p,
+  .vr-home[data-page]:not([data-page="home"]) .vr-page li{
+    font-size:15px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-box,
+  .vr-home[data-page]:not([data-page="home"]) .vr-official-sources,
+  .vr-home[data-page]:not([data-page="home"]) .vr-ai-help{
+    padding:20px;
+    border-radius:22px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table{
+    font-size:13px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table th,
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-table td{
+    padding:11px 10px;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-actions{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-airline-actions .vr-btn{
+    width:100%;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .vr-home[data-page]:not([data-page="home"]) .vr-page .vr-btn:hover,
+  .vr-home[data-page]:not([data-page="home"]) .vr-contact-airline:hover,
+  .vr-home[data-page]:not([data-page="home"]) .vr-directory-group:hover,
+  .vr-home[data-page]:not([data-page="home"]) .vr-directory-airline:hover{
+    transform:none;
+  }
+}
+
+/* Compact homepage layout and motion system. */
+@view-transition{navigation:auto}
+.vr-nav{view-transition-name:site-nav}
+::view-transition-old(site-nav),::view-transition-new(site-nav){animation:none}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+.vr-home[data-page="home"]{background:#fff}
+.vr-home[data-page="home"] .vr-hero{padding:clamp(40px,6vw,80px) 0}
+.vr-home[data-page="home"] .vr-hero-inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  grid-template-areas:"copy media" "stat media";
+  align-items:center;
+  gap:20px 48px;
+}
+.vr-home[data-page="home"] .vr-hero-copy{
+  grid-area:copy;
+  max-width:540px;
+  margin:0;
+  text-align:left;
+}
+.vr-home[data-page="home"] .vr-home-kicker{
+  margin:0 0 14px;
+  padding:4px 10px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-label);
+  background:#fff;
+  color:var(--color-secondary);
+  font-size:12px;
+}
+.vr-home[data-page="home"] .vr-hero h1{
+  max-width:560px;
+  margin:0 0 16px;
+  font-size:clamp(2rem,4.5vw,3rem);
+  font-weight:700;
+  letter-spacing:-.01em;
+  line-height:1.12;
+}
+.vr-home[data-page="home"] .vr-hero p{
+  max-width:58ch;
+  margin:0 0 20px;
+  font-size:16px;
+  line-height:1.6;
+}
+.vr-home[data-page="home"] .vr-btns{
+  justify-content:flex-start;
+  gap:10px;
+}
+.vr-home[data-page="home"] .vr-btn{
+  min-height:44px;
+  padding:0 17px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  transition:transform .2s var(--motion-ease),background .2s var(--motion-ease),box-shadow .2s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-btn:active,
+.vr-home[data-page="home"] .vr-nav-cta:active{
+  transform:scale(.98);
+}
+.vr-home[data-page="home"] .vr-btn-primary,
+.vr-home[data-page="home"] .vr-cta2 .vr-btn{
+  background:var(--color-accent);
+  color:#fff;
+}
+.vr-home[data-page="home"] .vr-btn-primary:hover,
+.vr-home[data-page="home"] .vr-cta2 .vr-btn:hover{
+  background:#1d4ed8;
+}
+.vr-home[data-page="home"] .vr-btn-ghost{
+  min-height:44px;
+  padding:0 8px;
+  color:var(--color-link);
+}
+.vr-home[data-page="home"] .vr-btn-emergency{
+  min-height:44px;
+  margin-top:12px;
+  padding:8px 12px;
+  border:1px solid #c62828;
+  border-radius:10px;
+  background:#c62828;
+  color:#fff;
+  box-shadow:0 2px 6px rgba(198,40,40,.16);
+}
+.vr-home[data-page="home"] .vr-btn-emergency:hover{
+  border-color:#a61f1f;
+  background:#a61f1f;
+  color:#fff;
+  box-shadow:0 4px 10px rgba(166,31,31,.2);
+}
+.vr-home[data-page="home"] .vr-hero-media{
+  grid-area:media;
+  width:100%;
+  max-width:none;
+  height:min(440px,65vh);
+  aspect-ratio:auto;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:var(--color-canvas);
+  box-shadow:var(--shadow-card);
+}
+.vr-home[data-page="home"] .vr-hero-media img{
+  object-fit:cover;
+}
+.vr-home[data-page="home"] .vr-hero-stat{
+  grid-area:stat;
+  justify-content:flex-start;
+  gap:8px;
+  margin:0;
+}
+.vr-home[data-page="home"] .vr-hero-stat strong{
+  color:var(--color-accent);
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+.vr-home[data-page="home"] .vr-hero-stat span{
+  font-size:13px;
+}
+.vr-home[data-page="home"] .vr-sec,
+.vr-home[data-page="home"] .vr-sec-tight{
+  padding:clamp(40px,6vw,80px) 0;
+}
+.vr-home[data-page="home"] .vr-sec-tight,
+.vr-home[data-page="home"] .vr-sec.vr-soft,
+.vr-home[data-page="home"] section#airlines{
+  background:#fff;
+}
+.vr-home[data-page="home"] .vr-sec.vr-soft,
+.vr-home[data-page="home"] section#airlines{
+  background:var(--color-canvas);
+}
+.vr-home[data-page="home"] .vr-sec h2{
+  max-width:760px;
+  margin:0 0 22px;
+  font-size:clamp(1.5rem,3vw,2.125rem);
+  font-weight:650;
+  letter-spacing:-.01em;
+  line-height:1.2;
+}
+.vr-home[data-page="home"] .vr-head{
+  max-width:720px;
+  margin:0 0 24px;
+  text-align:left;
+}
+.vr-home[data-page="home"] .vr-head h2{
+  margin:0 0 8px;
+}
+.vr-home[data-page="home"] .vr-eyebrow{
+  margin-bottom:6px;
+  color:var(--color-accent);
+  font-size:11px;
+  font-weight:700;
+}
+.vr-home[data-page="home"] .vr-sub{
+  max-width:68ch;
+  margin:0;
+  font-size:15px;
+  line-height:1.6;
+}
+.vr-home[data-page="home"] .vr-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.vr-home[data-page="home"] .vr-card{
+  min-height:0;
+  padding:20px;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-card);
+  transition:transform .24s var(--motion-ease),box-shadow .24s var(--motion-ease),border-color .24s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(37,99,235,.25);
+  box-shadow:var(--shadow-hover);
+}
+.vr-home[data-page="home"] .vr-card:focus-within{
+  transform:translateY(-3px);
+  border-color:rgba(37,99,235,.4);
+  box-shadow:var(--shadow-hover);
+}
+.vr-home[data-page="home"] .vr-card-icon{
+  width:36px;
+  height:36px;
+  margin:0 0 12px;
+  border-radius:10px;
+  background:var(--color-canvas);
+  color:var(--color-accent);
+}
+.vr-home[data-page="home"] .vr-card-icon svg{
+  width:22px;
+  height:22px;
+}
+.vr-home[data-page="home"] .vr-card h3{
+  margin:0 0 6px;
+  font-size:18px;
+  font-weight:650;
+  letter-spacing:0;
+}
+.vr-home[data-page="home"] .vr-card p{
+  margin:0 0 12px;
+  font-size:14px;
+  line-height:1.55;
+}
+.vr-home[data-page="home"] .vr-more{
+  font-size:13px;
+  font-weight:650;
+}
+.vr-home[data-page="home"] .vr-calc{
+  position:relative;
+  display:grid;
+  width:min(100%,920px);
+  grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);
+  margin:0 auto;
+  overflow:visible;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-card);
+}
+.vr-home[data-page="home"] .vr-calc-controls{
+  gap:14px;
+  padding:24px;
+}
+.vr-home[data-page="home"] .vr-calc-field{
+  gap:6px;
+  font-size:13px;
+  font-weight:650;
+}
+.vr-home[data-page="home"] .vr-calc-form select,
+.vr-home[data-page="home"] .vr-calc-form input[type=number],
+.vr-home[data-page="home"] .vr-calc-conditional select{
+  min-height:44px;
+  padding:8px 11px;
+  border-radius:10px;
+  font-size:14px;
+}
+.vr-home[data-page="home"] .vr-calc-form select:focus-visible,
+.vr-home[data-page="home"] .vr-calc-form input:focus-visible,
+.vr-home[data-page="home"] .vr-calc-conditional select:focus-visible{
+  outline:3px solid rgba(37,99,235,.2);
+}
+.vr-home[data-page="home"] .vr-calc-conditional{
+  gap:7px;
+  padding:12px;
+  border-radius:10px;
+}
+.vr-home[data-page="home"] .vr-calc-conditional legend{
+  font-size:13px;
+}
+.vr-home[data-page="home"] .vr-calc-conditional>label:not(.vr-calc-field){
+  min-height:44px;
+  padding:8px 10px;
+  border-radius:9px;
+  font-size:12px;
+  transition:transform .2s var(--motion-ease),border-color .2s var(--motion-ease),background .2s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-calc-conditional>label:not(.vr-calc-field):has(input:checked){
+  border-color:var(--color-accent);
+  background:rgba(37,99,235,.07);
+}
+.vr-home[data-page="home"] .vr-calc-conditional input[type=radio]{
+  accent-color:var(--color-accent);
+}
+.vr-home[data-page="home"] .vr-calc-stepper{
+  border-radius:10px;
+}
+.vr-home[data-page="home"] .vr-calc-stepper button{
+  width:40px;
+  height:44px;
+}
+.vr-home[data-page="home"] .vr-calc-stepper input[type=number]{
+  width:52px;
+  min-height:44px;
+}
+.vr-home[data-page="home"] .vr-calc-form button[type=submit]{
+  min-height:44px;
+  padding:0 18px;
+  border-radius:10px;
+  background:var(--color-accent);
+  font-size:14px;
+}
+.vr-home[data-page="home"] .vr-calc-form button[type=submit]:hover{
+  background:#1d4ed8;
+}
+.vr-home[data-page="home"] .vr-calc-result{
+  position:sticky;
+  top:76px;
+  align-self:start;
+  min-height:220px;
+  margin:18px 18px 18px 0;
+  padding:22px;
+  border:1px solid var(--color-hairline);
+  border-radius:12px;
+  background:var(--color-canvas);
+  transition:opacity .24s var(--motion-ease),transform .24s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-calc-result h3{
+  margin:4px 0;
+  font-size:15px;
+  font-weight:650;
+}
+.vr-home[data-page="home"] .vr-calc-result p{
+  font-size:13px;
+  line-height:1.55;
+}
+.vr-home[data-page="home"] .vr-calc-result .vr-calc-total{
+  font-size:clamp(2.5rem,4vw,3.5rem);
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+.vr-home[data-page="home"] .vr-calc-result.is-updating{
+  opacity:.75;
+  transform:translateY(4px);
+}
+.vr-home[data-page="home"] .vr-calc-result{
+  transform:translateY(0);
+}
+.vr-home[data-page="home"] .vr-note{
+  max-width:920px;
+  margin:16px auto 0;
+  font-size:12px;
+}
+.vr-home[data-page="home"] .vr-official-sources{
+  width:min(100%,920px);
+  margin:22px auto 0;
+  padding:18px 20px;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-card);
+}
+.vr-home[data-page="home"] .vr-official-sources h3{
+  font-size:13px;
+}
+.vr-home[data-page="home"] .vr-official-sources li{
+  font-size:12px;
+}
+.vr-home[data-page="home"] .vr-how{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.vr-home[data-page="home"] .vr-how-step{
+  min-width:0;
+  padding:16px;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-card);
+  transition:transform .24s var(--motion-ease),box-shadow .24s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-how-step:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-hover);
+}
+.vr-home[data-page="home"] .vr-how-num{
+  display:inline-flex;
+  width:32px;
+  height:32px;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 10px;
+  border-radius:var(--radius-label);
+  background:rgba(37,99,235,.08);
+  color:var(--color-accent);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:0;
+}
+.vr-home[data-page="home"] .vr-how-step h3{
+  margin:0 0 6px;
+  font-size:16px;
+  font-weight:650;
+  letter-spacing:0;
+}
+.vr-home[data-page="home"] .vr-how-step p{
+  margin:0;
+  font-size:13px;
+  line-height:1.55;
+}
+.vr-home[data-page="home"] .vr-home-airlines{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.vr-home[data-page="home"] .vr-home-airline{
+  min-height:150px;
+  padding:16px;
+  border:1px solid var(--color-hairline);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-card);
+  transition:transform .24s var(--motion-ease),box-shadow .24s var(--motion-ease),border-color .24s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-home-airline:hover{
+  transform:translateY(-3px);
+  border-color:rgba(37,99,235,.25);
+  box-shadow:var(--shadow-hover);
+}
+.vr-home[data-page="home"] .vr-home-airline:focus-within{
+  transform:translateY(-3px);
+  border-color:rgba(37,99,235,.4);
+  box-shadow:var(--shadow-hover);
+}
+.vr-home[data-page="home"] .vr-home-airline-meta{
+  margin-bottom:10px;
+}
+.vr-home[data-page="home"] .vr-home-airline-mark{
+  min-width:34px;
+  height:34px;
+  border-radius:9px;
+  background:var(--color-canvas);
+  color:var(--color-accent);
+}
+.vr-home[data-page="home"] .vr-home-airline-label{
+  border-radius:var(--radius-label);
+  background:var(--color-canvas);
+  font-size:10px;
+}
+.vr-home[data-page="home"] .vr-home-airline h3{
+  font-size:16px;
+}
+.vr-home[data-page="home"] .vr-home-airline p{
+  font-size:13px;
+}
+.vr-home[data-page="home"] .vr-home-airlines-cta{
+  margin-top:20px;
+}
+.vr-home[data-page="home"] .vr-home-airlines-cta .vr-btn{
+  min-height:44px;
+  padding:0 17px;
+  border-radius:10px;
+  background:var(--color-accent);
+  color:#fff;
+}
+.vr-home[data-page="home"] .vr-faq{
+  max-width:900px;
+  gap:0;
+}
+.vr-home[data-page="home"] .vr-faq details,
+.vr-home[data-page="home"] .vr-faq details[open]{
+  border:0;
+  border-bottom:1px solid var(--color-hairline);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.vr-home[data-page="home"] .vr-faq summary{
+  display:flex;
+  min-height:48px;
+  align-items:center;
+  padding:8px 48px 8px 0;
+  color:var(--color-text);
+  font-size:15px;
+  font-weight:650;
+}
+.vr-home[data-page="home"] .vr-faq summary::after{
+  right:4px;
+  width:28px;
+  height:28px;
+  background:var(--color-canvas);
+  color:var(--color-accent);
+  font-size:21px;
+  transition:transform .24s var(--motion-ease),background .24s var(--motion-ease),color .24s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-faq details[open] summary::after{
+  transform:translateY(-50%);
+  background:rgba(37,99,235,.08);
+}
+.vr-home[data-page="home"] .vr-faq details p{
+  padding:0 0 16px;
+  font-size:14px;
+  line-height:1.6;
+}
+@supports selector(details::details-content){
+  .vr-home[data-page="home"] .vr-faq details::details-content{
+    opacity:0;
+    transition:opacity .24s var(--motion-ease),content-visibility .24s allow-discrete;
+  }
+  .vr-home[data-page="home"] .vr-faq details[open]::details-content{
+    opacity:1;
+  }
+}
+.vr-home[data-page="home"] .vr-cta2{
+  max-width:1080px;
+  padding:clamp(32px,5vw,56px) 24px;
+  border:1px solid rgba(37,99,235,.14);
+  border-radius:14px;
+  background:rgba(37,99,235,.07);
+  color:var(--color-text);
+  text-align:left;
+}
+.vr-home[data-page="home"] .vr-cta2 h2{
+  max-width:680px;
+  margin:0 0 10px;
+  color:var(--color-text);
+  font-size:clamp(1.5rem,3vw,2.125rem);
+  font-weight:700;
+  letter-spacing:-.01em;
+  line-height:1.2;
+}
+.vr-home[data-page="home"] .vr-cta2 p{
+  max-width:64ch;
+  margin:0 0 18px;
+  color:var(--color-secondary);
+  font-size:15px;
+}
+.vr-home[data-page="home"] .vr-cta2 .vr-btn{
+  min-height:44px;
+  padding:0 18px;
+  border-radius:10px;
+}
+.vr-home[data-page="home"] .vr-foot{
+  padding:30px 0 20px;
+}
+.vr-home[data-page="home"] .vr-foot-grid{
+  gap:30px;
+  padding-bottom:20px;
+}
+.vr-home[data-page="home"] a:not(.vr-btn){
+  text-decoration:none;
+  background-image:linear-gradient(currentColor,currentColor);
+  background-repeat:no-repeat;
+  background-position:0 100%;
+  background-size:0 1px;
+  transition:color .2s var(--motion-ease),background-size .2s var(--motion-ease);
+}
+.vr-home[data-page="home"] a:not(.vr-btn):hover{
+  background-size:100% 1px;
+}
+.vr-home[data-page="home"] .vr-card,
+.vr-home[data-page="home"] .vr-home-airline,
+.vr-home[data-page="home"] .vr-how-step,
+.vr-home[data-page="home"] .vr-faq details{
+  animation:none!important;
+}
+.vr-home[data-page="home"] [data-reveal-pending]{
+  opacity:0;
+  translate:0 16px;
+}
+.vr-home[data-page="home"] [data-reveal].is-revealed{
+  opacity:1;
+  translate:0 0;
+}
+.vr-home[data-page="home"] [data-reveal]{
+  transition:opacity .32s var(--motion-ease),translate .32s var(--motion-ease);
+}
+.vr-home[data-page="home"] .vr-hero-media img{
+  transition:transform .3s var(--motion-ease);
+}
+.vr-home[data-page="home"] #calc,
+.vr-home[data-page="home"] #airlines,
+.vr-home[data-page="home"] #belangrijk,
+.vr-home[data-page="home"] #bedragen{
+  scroll-margin-top:76px;
+}
+@media (max-width:900px){
+  .vr-home[data-page="home"] .vr-hero-inner{
+    grid-template-columns:minmax(0,1fr) minmax(0,.9fr);
+    gap:18px 28px;
+  }
+  .vr-home[data-page="home"] .vr-home-airlines{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .vr-home[data-page="home"] .vr-calc{
+    grid-template-columns:minmax(0,1.1fr) minmax(230px,.9fr);
+  }
+}
+@media (max-width:760px){
+  .vr-home[data-page="home"] .vr-hero{
+    padding:36px 0 42px;
+  }
+  .vr-home[data-page="home"] .vr-hero-inner{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"copy" "stat" "media";
+    gap:14px;
+  }
+  .vr-home[data-page="home"] .vr-hero-copy{
+    max-width:620px;
+  }
+  .vr-home[data-page="home"] .vr-hero-media{
+    height:auto;
+    aspect-ratio:1.55/1;
+  }
+  .vr-home[data-page="home"] .vr-sec,
+  .vr-home[data-page="home"] .vr-sec-tight{
+    padding:42px 0;
+  }
+  .vr-home[data-page="home"] .vr-calc{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .vr-home[data-page="home"] .vr-calc-result{
+    position:static;
+    min-height:160px;
+    margin:0 16px 16px;
+    padding:18px;
+  }
+  .vr-home[data-page="home"] .vr-how{
+    gap:10px;
+  }
+}
+@media (max-width:600px){
+  .vr-home[data-page="home"] .vr-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .vr-home[data-page="home"] .vr-card{
+    padding:17px;
+  }
+  .vr-home[data-page="home"] .vr-how{
+    grid-template-columns:1fr;
+  }
+  .vr-home[data-page="home"] .vr-how-step{
+    display:grid;
+    grid-template-columns:34px minmax(0,1fr);
+    column-gap:12px;
+    padding:14px;
+  }
+  .vr-home[data-page="home"] .vr-how-num{
+    grid-row:1/3;
+    margin:0;
+  }
+  .vr-home[data-page="home"] .vr-home-airlines{
+    display:grid;
+    grid-auto-columns:minmax(250px,82%);
+    grid-auto-flow:column;
+    grid-template-columns:none;
+    overflow-x:auto;
+    padding:2px 2px 14px;
+    scroll-snap-type:x mandatory;
+    overscroll-behavior-x:contain;
+  }
+  .vr-home[data-page="home"] .vr-home-airline{
+    scroll-snap-align:start;
+  }
+  .vr-home[data-page="home"] .vr-cta2{
+    padding:28px 20px;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .vr-home[data-page="home"] [data-reveal],
+  .vr-home[data-page="home"] [data-reveal-pending],
+  .vr-home[data-page="home"] [data-reveal].is-revealed{
+    opacity:1;
+    translate:none;
+    transition:none;
+  }
+  .vr-home[data-page="home"] .vr-home-airline:hover,
+  .vr-home[data-page="home"] .vr-card:hover,
+  .vr-home[data-page="home"] .vr-how-step:hover,
+  .vr-home[data-page="home"] .vr-card:focus-within,
+  .vr-home[data-page="home"] .vr-home-airline:focus-within{
+    transform:none;
+  }
+  .vr-home[data-page="home"] .vr-hero-media img{
+    animation:none!important;
+    scale:1!important;
+    translate:none!important;
+    transition:none;
+  }
+}
+
+.vr-home[data-page="faq"] .vr-faq-topics{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:24px 0 42px;
+}
+.vr-home[data-page="faq"] .vr-faq-topics a{
+  display:inline-flex;
+  min-height:40px;
+  align-items:center;
+  padding:7px 13px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-label);
+  background:#fff;
+  color:var(--color-link);
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  transition:background .2s var(--motion-ease),border-color .2s var(--motion-ease),transform .2s var(--motion-ease);
+}
+.vr-home[data-page="faq"] .vr-faq-topics a:hover{
+  transform:translateY(-1px);
+  border-color:rgba(37,99,235,.3);
+  background:rgba(37,99,235,.06);
+}
+.vr-home[data-page="faq"] .vr-faq-category{
+  padding-top:12px;
+  margin-bottom:40px;
+  scroll-margin-top:80px;
+}
+.vr-home[data-page="faq"] .vr-faq-category h2{
+  margin:0 0 12px;
+  font-size:clamp(1.35rem,2.4vw,1.75rem);
+  letter-spacing:-.01em;
+}
+.vr-home[data-page="faq"] .vr-faq-category .vr-faq{
+  margin:0;
+}
+.vr-home[data-page="faq"] .vr-faq details p{
+  max-width:76ch;
+}
+.vr-home[data-page="faq"] .vr-page>p:last-child{
+  margin-top:48px;
+  padding:20px;
+  border-radius:var(--radius-card);
+  background:var(--color-canvas);
+}
+.vr-home[data-page="home"] .vr-faq-all{
+  margin:20px 0 0;
+  font-size:14px;
+  font-weight:650;
+  text-align:right;
+}
+.vr-home[data-page="home"] .vr-faq-all a{
+  color:var(--color-link);
+}
+@media (prefers-reduced-motion:reduce){
+  .vr-home[data-page="faq"] .vr-faq-topics a:hover{
+    transform:none;
+  }
+}
+.vr-home[data-page="faq"] .vr-faq-assistant{
+  display:grid;
+  gap:16px;
+  margin:0 0 42px;
+  padding:clamp(20px,3vw,30px);
+  border:1px solid rgba(37,99,235,.16);
+  border-radius:var(--radius-card);
+  background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(37,99,235,.025));
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-label{
+  display:inline-flex;
+  margin-bottom:6px;
+  color:var(--color-accent);
+  font-size:12px;
+  font-weight:700;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant h2{
+  margin:0 0 4px;
+  font-size:clamp(1.35rem,2.4vw,1.75rem);
+}
+.vr-home[data-page="faq"] .vr-faq-assistant p{
+  max-width:76ch;
+  margin:0;
+  color:var(--color-secondary);
+  font-size:14px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-form{
+  display:grid;
+  gap:8px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-form label{
+  font-size:14px;
+  font-weight:650;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls{
+  display:flex;
+  gap:10px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls input{
+  width:100%;
+  min-width:0;
+  min-height:46px;
+  padding:10px 13px;
+  border:1px solid rgba(0,0,0,.16);
+  border-radius:var(--radius-control);
+  background:#fff;
+  color:var(--color-text);
+  font:inherit;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls input:focus-visible{
+  outline:3px solid rgba(37,99,235,.22);
+  border-color:var(--color-accent);
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls button{
+  min-height:46px;
+  flex:0 0 auto;
+  padding:0 17px;
+  border:0;
+  border-radius:var(--radius-control);
+  background:var(--color-accent);
+  color:#fff;
+  font:inherit;
+  font-size:14px;
+  font-weight:650;
+  cursor:pointer;
+  transition:transform .2s var(--motion-ease),background .2s var(--motion-ease);
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls button:hover{
+  background:#1d4ed8;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-controls button:active{
+  transform:scale(.98);
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-result{
+  display:grid;
+  gap:8px;
+  padding:14px 16px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:rgba(255,255,255,.82);
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-result:empty{
+  display:none;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-result h3{
+  margin:0;
+  font-size:15px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-result p{
+  color:var(--color-text);
+  font-size:14px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-result a{
+  width:fit-content;
+  color:var(--color-link);
+  font-size:14px;
+  font-weight:650;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant-search-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.vr-home[data-page="faq"] .vr-faq-assistant :focus-visible{
+  outline:3px solid rgba(37,99,235,.35);
+  outline-offset:3px;
+}
+@media (max-width:560px){
+  .vr-home[data-page="faq"] .vr-faq-assistant-controls{
+    flex-direction:column;
+  }
+  .vr-home[data-page="faq"] .vr-faq-assistant-controls button{
+    width:100%;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .vr-home[data-page="faq"] .vr-faq-assistant-controls button{
+    transition:none;
+  }
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-page{
+  max-width:860px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first,
+.vr-home[data-page="op-luchthaven"] .vr-airport-options,
+.vr-home[data-page="op-luchthaven"] .vr-ai-help{
+  margin:24px 0;
+  padding:22px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-card);
+  background:#fff;
+  box-shadow:var(--shadow-card);
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first{
+  border-color:rgba(37,99,235,.16);
+  background:rgba(37,99,235,.045);
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first h2,
+.vr-home[data-page="op-luchthaven"] .vr-airport-options h2,
+.vr-home[data-page="op-luchthaven"] .vr-ai-help h2{
+  margin:0 0 14px;
+  font-size:clamp(1.25rem,2.4vw,1.65rem);
+  letter-spacing:-.01em;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first ol,
+.vr-home[data-page="op-luchthaven"] .vr-ai-help ul{
+  display:grid;
+  gap:10px;
+  margin:0;
+  padding-left:22px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first li,
+.vr-home[data-page="op-luchthaven"] .vr-ai-help li{
+  padding-left:3px;
+  color:var(--color-text);
+  font-size:14px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-first>p,
+.vr-home[data-page="op-luchthaven"] .vr-ai-help>p{
+  margin:14px 0 0;
+  color:var(--color-secondary);
+  font-size:13px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-options{
+  padding:22px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option{
+  display:flex;
+  min-height:104px;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:5px;
+  padding:15px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:var(--color-canvas);
+  color:var(--color-text);
+  text-align:left;
+  cursor:pointer;
+  transition:transform .2s var(--motion-ease),border-color .2s var(--motion-ease),background .2s var(--motion-ease),box-shadow .2s var(--motion-ease);
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option strong{
+  font-size:14px;
+  line-height:1.35;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option span{
+  color:var(--color-secondary);
+  font-size:12px;
+  line-height:1.45;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option:hover{
+  transform:translateY(-2px);
+  border-color:rgba(37,99,235,.32);
+  background:#fff;
+  box-shadow:var(--shadow-card);
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-option:focus-visible,
+.vr-home[data-page="op-luchthaven"] .vr-ai-choice:focus-visible,
+.vr-home[data-page="op-luchthaven"] #assistant-send:focus-visible{
+  outline:3px solid rgba(37,99,235,.4);
+  outline-offset:3px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-shell{
+  margin:28px 0;
+  scroll-margin-top:78px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-header{
+  gap:10px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-chat{
+  min-height:150px;
+  max-height:560px;
+  scroll-behavior:smooth;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-actions{
+  border-top:1px solid var(--color-hairline);
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-choice{
+  min-height:44px;
+  padding:10px 13px;
+  font-size:14px;
+  text-align:left;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-input-wrap[hidden]{
+  display:none;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result{
+  display:grid;
+  gap:12px;
+  margin:8px 0 2px;
+  padding:18px;
+  border:1px solid rgba(37,99,235,.15);
+  border-radius:var(--radius-control);
+  background:rgba(37,99,235,.045);
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result h2{
+  margin:0;
+  color:var(--color-text);
+  font-size:18px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result ol{
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding-left:22px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result li{
+  padding-left:3px;
+  color:var(--color-text);
+  font-size:14px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result p{
+  margin:0;
+  font-size:13px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result .vr-airport-script{
+  padding:12px;
+  border-radius:8px;
+  background:#fff;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-result .vr-airport-rights-note{
+  color:var(--color-secondary);
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-result-link,
+.vr-home[data-page="op-luchthaven"] .vr-airport-links a{
+  color:var(--color-link);
+  font-size:13px;
+  font-weight:650;
+}
+.vr-home[data-page="op-luchthaven"] .vr-airport-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 16px;
+  margin-top:14px;
+}
+.vr-home[data-page="op-luchthaven"] .vr-ai-reset{
+  background:var(--color-canvas);
+}
+@media (max-width:760px){
+  .vr-home[data-page="op-luchthaven"] .vr-airport-option-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:520px){
+  .vr-home[data-page="op-luchthaven"] .vr-airport-first,
+  .vr-home[data-page="op-luchthaven"] .vr-airport-options,
+  .vr-home[data-page="op-luchthaven"] .vr-ai-help{
+    padding:17px;
+  }
+  .vr-home[data-page="op-luchthaven"] .vr-airport-option-grid{
+    grid-template-columns:1fr;
+  }
+  .vr-home[data-page="op-luchthaven"] .vr-airport-option{
+    min-height:74px;
+  }
+  .vr-home[data-page="op-luchthaven"] .vr-ai-result{
+    padding:14px;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .vr-home[data-page="op-luchthaven"] .vr-airport-option{
+    transition:none;
+  }
+  .vr-home[data-page="op-luchthaven"] .vr-airport-option:hover{
+    transform:none;
+  }
+}
+
+.vr-home[data-page="vergoedingscheck"] .vr-result-separate-rights{
+  margin:20px 0;
+  padding:14px 16px;
+  border-left:3px solid var(--color-accent);
+  border-radius:0 10px 10px 0;
+  background:rgba(37,99,235,.06);
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-section-label{
+  margin:0 0 6px;
+  color:var(--color-secondary);
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result ol{
+  display:grid;
+  gap:10px;
+  padding-left:24px;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result ol li{
+  padding-left:4px;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result-airline{
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--color-hairline);
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result-airline>h3{
+  margin:0 0 8px;
+  font-size:1.15rem;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result-airline h4{
+  margin:18px 0 5px;
+  font-size:1rem;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page .vr-result-airline p{
+  max-width:72ch;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page select[name="airline"]{
+  width:100%;
+  min-height:48px;
+  padding:9px 12px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:#fff;
+  color:var(--color-text);
+  font:inherit;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-check-page select[name="airline"]:focus-visible{
+  outline:3px solid rgba(0,102,204,.65);
+  outline-offset:3px;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-airline h3{
+  margin:0 0 8px;
+  font-size:1.05rem;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:14px 0;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-actions a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:9px 13px;
+  border:1px solid var(--color-hairline);
+  border-radius:var(--radius-control);
+  background:var(--color-canvas);
+  text-decoration:none;
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-actions a:hover{
+  border-color:var(--color-accent);
+  background:rgba(37,99,235,.055);
+}
+.vr-home[data-page="vergoedingscheck"] .vr-result-policy-note{
+  margin-bottom:0;
+  color:var(--color-secondary);
+  font-size:.92rem;
+}
+@media (max-width:520px){
+  .vr-home[data-page="vergoedingscheck"] .vr-result-actions{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .vr-home[data-page="vergoedingscheck"] .vr-result-actions a{
+    width:100%;
+  }
 }

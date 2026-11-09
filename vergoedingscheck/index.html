@@ -17,9 +17,8 @@
 <meta property="og:description" content="Beantwoord een paar vragen en zie binnen een minuut of je recht hebt op compensatie voor je vertraagde, geannuleerde of overboekte vlucht.">
 <link rel="stylesheet" href="../style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9656739559433603"
-     crossorigin="anonymous"></script></head>
-<body><div class="vr-home" data-page="vergoedingscheck"><header class="vr-nav"><div class="vr-wrap"><a class="vr-logo" href="../"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
-<nav class="vr-menu" aria-label="Hoofdmenu"><a href="../">Home</a><a href="../vlucht-vertraagd/">Vertraagd</a><a href="../vlucht-geannuleerd/">Geannuleerd</a><a href="../overboekt/">Overboekt</a><a href="../luchtvaartmaatschappijen/">Airlines</a><a href="../op-luchthaven/">Op luchthaven</a><a href="../over/">Over</a><a href="../contact/">Contact</a></nav></div></header><main class="vr-page vr-check-page"><h1>Vergoedingscheck</h1>
+     crossorigin="anonymous"></script><script src="../site.js" defer></script></head>
+<body><div class="vr-home" data-page="vergoedingscheck"><a class="vr-skip-link" href="#main">Ga naar inhoud</a><header class="vr-nav"><div class="vr-wrap vr-nav-inner"><a class="vr-logo" href="../" aria-label="UwVliegrechten - home"><svg class="vr-logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M15.9 3.5c.8 0 1.4.7 1.4 1.5v9.2l8.4 5.2v2.3l-8.4-2.6v5.5l3.2 2v1.7l-4.6-1.1-4.6 1.1v-1.7l3.2-2v-5.5l-8.4 2.6v-2.3l8.4-5.2V5c0-.8.6-1.5 1.4-1.5Z" fill="currentColor"/></svg><span>UwVliegrechten</span></a><nav class="vr-menu" id="site-menu" aria-label="Hoofdmenu" data-menu-open="false"><a href="../">Home</a><a href="../vlucht-vertraagd/">Vertraagd</a><a href="../vlucht-geannuleerd/">Geannuleerd</a><a href="../overboekt/">Overboekt</a><a href="../luchtvaartmaatschappijen/">Airlines</a><a href="../op-luchthaven/">Op luchthaven</a><a href="../contact/">Contact &amp; over</a><a href="../veelgestelde-vragen/">FAQ</a></nav><div class="vr-nav-actions"><a class="vr-nav-cta" href="../vergoedingscheck/" aria-current="page">Check je vergoeding</a><button class="vr-menu-toggle" type="button" data-menu-toggle aria-controls="site-menu" aria-expanded="false" aria-label="Menu openen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div></header><main class="vr-page vr-check-page" id="main"><h1>Vergoedingscheck</h1>
 
 <p class="vr-check-intro">Beantwoord de vragen voor een voorzichtige indicatie op basis van Verordening (EG) 261/2004. De uitkomst is geen garantie: de toepasselijkheid hangt onder meer af van route, bewijs en de omstandigheden van de verstoring.</p>
 <p class="vr-check-privacy">Je antwoorden blijven op dit apparaat en worden niet opgeslagen of verstuurd.</p>
@@ -41,21 +40,29 @@
   </fieldset>
 
   <fieldset>
-    <legend>3. Hoe ver was de vlucht?</legend>
+    <legend>3. Welke airline voerde je vlucht uit?</legend>
+    <label for="airline">Kies de maatschappij die de vlucht uitvoerde. Bij een codeshare kan dat een andere airline zijn dan waarbij je boekte.</label>
+    <select id="airline" name="airline" required>
+      <option value="">Selecteer een airline</option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <legend>4. Hoe ver was de vlucht?</legend>
     <label><input type="radio" name="afstand" value="kort" required> Tot en met 1.500 km</label>
     <label><input type="radio" name="afstand" value="midden"> Binnen de EU meer dan 1.500 km, of andere vluchten van meer dan 1.500 tot en met 3.500 km</label>
     <label><input type="radio" name="afstand" value="lang"> Andere vluchten van meer dan 3.500 km</label>
   </fieldset>
 
   <fieldset data-voor="vertraagd" hidden>
-    <legend>4. Hoeveel later kwam je aan op je eindbestemming?</legend>
+    <legend>5. Hoeveel later kwam je aan op je eindbestemming?</legend>
     <label><input type="radio" name="vertraging" value="minder3"> Minder dan 3 uur</label>
     <label><input type="radio" name="vertraging" value="3tot4"> 3 tot en met 4 uur</label>
     <label><input type="radio" name="vertraging" value="meer4"> Meer dan 4 uur</label>
   </fieldset>
 
   <fieldset data-voor="geannuleerd" hidden>
-    <legend>4. Wanneer hoorde je van de annulering?</legend>
+    <legend>5. Wanneer hoorde je van de annulering?</legend>
     <label><input type="radio" name="melding" value="meer14"> 14 dagen of meer voor vertrek</label>
     <label><input type="radio" name="melding" value="7tot14"> 7 tot minder dan 14 dagen voor vertrek</label>
     <label><input type="radio" name="melding" value="minder7"> Minder dan 7 dagen voor vertrek</label>
@@ -71,7 +78,7 @@
   </fieldset>
 
   <fieldset data-voor="overboekt" hidden>
-    <legend>4. Heb je je stoel vrijwillig afgestaan?</legend>
+    <legend>5. Heb je je stoel vrijwillig afgestaan?</legend>
     <label><input type="radio" name="vrijwillig" value="nee"> Nee, ik werd tegen mijn wil geweigerd</label>
     <label><input type="radio" name="vrijwillig" value="ja"> Ja, ik heb me als vrijwilliger gemeld</label>
   </fieldset>
@@ -87,7 +94,7 @@
   </fieldset>
 
   <fieldset data-voor="vertraagd geannuleerd" hidden>
-    <legend>5. Wat was de oorzaak volgens de airline?</legend>
+    <legend>6. Wat was de oorzaak volgens de airline?</legend>
     <label><input type="radio" name="oorzaak" value="airline"> Technisch probleem, personeelstekort, staking van eigen personeel of operationele reden</label>
     <label><input type="radio" name="oorzaak" value="extern"> Extreem weer, staking van luchtverkeersleiding of luchthaven, beveiligingsrisico</label>
     <label><input type="radio" name="oorzaak" value="onbekend"> Weet ik niet</label>
@@ -113,16 +120,7 @@
   <p class="vr-source-date">Bronnen gecontroleerd op 7 november 2026.</p>
 </section>
 <p class="vr-note">Deze check geeft een indicatie en is geen juridisch advies. De airline moet aan de wettelijke voorwaarden voldoen; de uitkomst hangt af van de feiten en het bewijs. Sommige links op deze site zijn affiliate-links.</p>
-</main><footer class="vr-foot"><div class="vr-wrap">
-<div class="vr-foot-grid">
-<div class="vr-foot-brand"><a class="vr-logo" href="../"><span class="vr-logo-mark" aria-hidden="true">✈</span>UwVliegrechten</a>
-<p>Heldere uitleg over je rechten bij een vertraagde, geannuleerde of overboekte vlucht.</p>
-<a class="vr-foot-email" href="mailto:malesteinsem@gmail.com">malesteinsem@gmail.com</a></div>
-<div><h4>Je rechten</h4><a href="../vlucht-vertraagd/">Vlucht vertraagd</a><a href="../vlucht-geannuleerd/">Vlucht geannuleerd</a><a href="../overboekt/">Overboekt</a><a href="../vergoedingscheck/">Vergoedingscheck</a></div>
-<div><h4>Over de site</h4><a href="../over/">Over</a><a href="../contact/">Contact</a><a href="../privacy/">Privacyverklaring</a></div>
-</div>
-<p class="vr-foot-note">Algemene informatie, geen juridisch advies. Of jij recht hebt op een vergoeding hangt af van jouw situatie. Sommige links zijn affiliate-links. UwVliegrechten is een persoonlijk project en niet verbonden aan een luchthaven of airline.</p>
-</div></footer></div>
+</main><footer class="vr-foot"><div class="vr-wrap"><div class="vr-foot-grid"><div class="vr-foot-brand"><a class="vr-logo" href="../" aria-label="UwVliegrechten - home"><svg class="vr-logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M15.9 3.5c.8 0 1.4.7 1.4 1.5v9.2l8.4 5.2v2.3l-8.4-2.6v5.5l3.2 2v1.7l-4.6-1.1-4.6 1.1v-1.7l3.2-2v-5.5l-8.4 2.6v-2.3l8.4-5.2V5c0-.8.6-1.5 1.4-1.5Z" fill="currentColor"/></svg><span>UwVliegrechten</span></a><p>Heldere uitleg over je rechten bij een vertraagde, geannuleerde of overboekte vlucht.</p><a class="vr-foot-email" href="mailto:malesteinsem@gmail.com">malesteinsem@gmail.com</a></div><div><h2>Je rechten</h2><a href="../vlucht-vertraagd/">Vlucht vertraagd</a><a href="../vlucht-geannuleerd/">Vlucht geannuleerd</a><a href="../overboekt/">Overboekt</a><a href="../vergoedingscheck/">Vergoedingscheck</a></div><div><h2>Over de site</h2><a href="../luchtvaartmaatschappijen/">Airlines</a><a href="../op-luchthaven/">Op luchthaven</a><a href="../contact/">Contact &amp; over</a><a href="../veelgestelde-vragen/">Veelgestelde vragen</a><a href="../privacy/">Privacyverklaring</a></div></div><p class="vr-foot-note">Algemene informatie, geen juridisch advies. Of jij recht hebt op een vergoeding hangt af van jouw situatie. Sommige links zijn affiliate-links. UwVliegrechten is een persoonlijk project en niet verbonden aan een luchthaven of airline.</p></div></footer></div>
 <script>
 (function () {
   var form = document.getElementById('check');
@@ -133,6 +131,98 @@
     geannuleerd: '../vlucht-geannuleerd/',
     overboekt: '../overboekt/'
   };
+  var airlines = [
+    { key:'klm', name:'KLM', group:'Veelgekozen airlines', statement:'KLM biedt een online claimroute voor verzoeken over een vlucht. Dien je aanvraag via die route in en voeg de vluchtgegevens en relevante bewijsstukken toe.', official:'https://www.klm.nl/claim', officialLabel:'KLM-claim indienen of volgen', support:'https://www.klm.nl/contact', supportLabel:'KLM-contactopties', page:'../klm/' },
+    { key:'transavia', name:'Transavia', group:'Veelgekozen airlines', statement:'Transavia gebruikt de eigen contactroute voor klachten, claims en feedback. Beschrijf je vluchtverstoring en vraag om een schriftelijke beoordeling van je verzoek.', official:'https://www.transavia.com/nl-nl/veelgestelde-vragen/contact/', officialLabel:'Klacht of claim indienen bij Transavia', support:'https://www.transavia.com/service/nl-nl/contact', supportLabel:'Transavia-contact en spoedhulp', page:'../transavia/' },
+    { key:'easyjet', name:'easyJet', group:'Veelgekozen airlines', statement:'easyJet heeft een specifieke EU261-claimpagina. Gebruik deze voor een EU261-verzoek; voor andere vragen over de boeking is er een afzonderlijke help- en contactroute.', official:'https://www.easyjet.com/nl/claim/EU261', officialLabel:'EU261-claim indienen bij easyJet', support:'https://www.easyjet.com/nl/help/contact', supportLabel:'easyJet-hulp en contact', page:'../easyjet/' },
+    { key:'ryanair', name:'Ryanair', group:'Veelgekozen airlines', statement:'Ryanair verwijst passagiers naar het Help Centre en de contactpagina. Kies daar het onderwerp dat past bij jouw vluchtverstoring; voor sommige diensten kan inloggen nodig zijn.', official:'https://help.ryanair.com/hc/nl', officialLabel:'Ryanair Help Centre: claims en hulp', support:'https://help.ryanair.com/hc/nl/articles/12892354434065-Contact', supportLabel:'Ryanair-contactopties', page:'../ryanair/' },
+    { key:'turkish', name:'Turkish Airlines', group:'Veelgekozen airlines', statement:'Turkish Airlines publiceert een pagina over passagiersrechten en biedt een aparte contactroute. De rechtenpagina is airline-informatie; deze check doet geen uitspraak over eventuele aanspraken onder andere nationale regels.', official:'https://www.turkishairlines.com/en-int/legal-notice/passenger-rights/', officialLabel:'Turkish Airlines-informatie over passagiersrechten', support:'https://www.turkishairlines.com/en-int/any-questions/get-in-touch/', supportLabel:'Turkish Airlines-contactopties', page:'../turkish-airlines/' },
+    { key:'wizz-air', name:'Wizz Air', group:'Onafhankelijke airlines', official:'https://www.wizzair.com/en-gb/information-and-services/contact/contact-us', officialLabel:'Wizz Air-contact en helpcentrum' },
+    { key:'jet2', name:'Jet2.com', group:'Onafhankelijke airlines', official:'https://www.jet2.com/faqs/contact-us', officialLabel:'Jet2.com-contact en veelgestelde vragen' },
+    { key:'norwegian', name:'Norwegian', group:'Onafhankelijke airlines', official:'https://www.norwegian.com/uk/customer-service/contact-us/', officialLabel:'Norwegian-klantenservice en contact' },
+    { key:'vueling', name:'Vueling', group:'Onafhankelijke airlines', official:'https://help.vueling.com/hc/en-gb', officialLabel:'Vueling-helpcentrum en claims' },
+    { key:'volotea', name:'Volotea', group:'Onafhankelijke airlines', official:'https://www.volotea.com/en/contact/', officialLabel:'Volotea Help Center en contact' },
+    { key:'icelandair', name:'Icelandair', group:'Onafhankelijke airlines', official:'https://www.icelandair.com/support/contact-us/', officialLabel:'Icelandair-contact- en claimroute' },
+    { key:'emirates', name:'Emirates', group:'Onafhankelijke airlines', official:'https://www.emirates.com/nl/dutch/help/', officialLabel:'Emirates-hulp, contact en klachten' },
+    { key:'etihad', name:'Etihad Airways', group:'Onafhankelijke airlines', official:'https://www.etihad.com/en/help/share-feedback', officialLabel:'Etihad-klachten en feedback' },
+    { key:'flydubai', name:'flydubai', group:'Onafhankelijke airlines', official:'https://www.flydubai.com/en/help/contact-us', officialLabel:'flydubai-contact en hulp' },
+    { key:'pegasus', name:'Pegasus Airlines', group:'Onafhankelijke airlines', official:'https://www.flypgs.com/en/contact', officialLabel:'Pegasus-contact en help' },
+    { key:'aerolineas-argentinas', name:'Aerolíneas Argentinas', group:'SkyTeam', official:'https://www.skyteam.com/en/about/aerolineas-argentinas', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'aeromexico', name:'Aeromexico', group:'SkyTeam', official:'https://www.skyteam.com/en/about/aeromexico', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'air-europa', name:'Air Europa', group:'SkyTeam', official:'https://www.skyteam.com/en/about/air-europa', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'air-france', name:'Air France', group:'SkyTeam', official:'https://www.skyteam.com/en/about/air-france', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite', support:'https://wwws.airfrance.nl/contact', supportLabel:'Air France-contactpagina' },
+    { key:'china-airlines', name:'China Airlines', group:'SkyTeam', official:'https://www.skyteam.com/en/about/china-airlines', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'china-eastern', name:'China Eastern', group:'SkyTeam', official:'https://www.skyteam.com/en/about/china-eastern-airlines', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'delta', name:'Delta Air Lines', group:'SkyTeam', official:'https://www.skyteam.com/en/about/delta-airlines', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite', support:'https://www.delta.com/us/en/need-help/overview', supportLabel:'Delta Help Center en contact' },
+    { key:'garuda-indonesia', name:'Garuda Indonesia', group:'SkyTeam', official:'https://www.skyteam.com/en/about/garuda-indonesia', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'kenya-airways', name:'Kenya Airways', group:'SkyTeam', official:'https://www.skyteam.com/en/about/kenya-airways', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'korean-air', name:'Korean Air', group:'SkyTeam', official:'https://www.skyteam.com/en/about/korean-air', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'middle-east-airlines', name:'Middle East Airlines', group:'SkyTeam', official:'https://www.skyteam.com/en/about/middle-east-airlines', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite', support:'https://www.mea.com.lb/english/contact-us', supportLabel:'Middle East Airlines-contact en klachtenformulier' },
+    { key:'sas', name:'SAS', group:'SkyTeam', official:'https://www.skyteam.com/en/about/sas', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'saudia', name:'Saudia', group:'SkyTeam', official:'https://www.skyteam.com/en/about/saudia', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'tarom', name:'TAROM', group:'SkyTeam', official:'https://www.skyteam.com/en/about/tarom', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite', support:'https://www.tarom.ro/en/contact/', supportLabel:'TAROM-contactpagina' },
+    { key:'vietnam-airlines', name:'Vietnam Airlines', group:'SkyTeam', official:'https://www.skyteam.com/en/about/vietnam-airlines', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'virgin-atlantic', name:'Virgin Atlantic', group:'SkyTeam', official:'https://www.skyteam.com/en/about/virgin-atlantic', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'xiamenair', name:'XiamenAir', group:'SkyTeam', official:'https://www.skyteam.com/en/about/xiamenair', officialLabel:'Officieel SkyTeam-profiel en airlinewebsite' },
+    { key:'aegean', name:'Aegean Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/aegean-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'air-canada', name:'Air Canada', group:'Star Alliance', official:'https://www.staralliance.com/members/air-canada', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'air-china', name:'Air China', group:'Star Alliance', official:'https://www.staralliance.com/members/air-china', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'air-india', name:'Air India', group:'Star Alliance', official:'https://www.staralliance.com/members/air-india', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'air-new-zealand', name:'Air New Zealand', group:'Star Alliance', official:'https://www.staralliance.com/members/air-new-zealand', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'ana', name:'ANA (All Nippon Airways)', group:'Star Alliance', official:'https://www.staralliance.com/members/ana', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'asiana', name:'Asiana Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/asiana-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'austrian', name:'Austrian Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/austrian-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'avianca', name:'Avianca', group:'Star Alliance', official:'https://www.staralliance.com/members/avianca', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'brussels-airlines', name:'Brussels Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/brussels-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'copa-airlines', name:'Copa Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/copa-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'croatia-airlines', name:'Croatia Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/croatia-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'egyptair', name:'Egyptair', group:'Star Alliance', official:'https://www.staralliance.com/members/egyptair', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'ethiopian-airlines', name:'Ethiopian Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/ethiopian-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'eva-air', name:'EVA Air', group:'Star Alliance', official:'https://www.staralliance.com/members/eva-air', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'ita-airways', name:'ITA Airways', group:'Star Alliance', official:'https://www.staralliance.com/members/ita-airways', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'lot-polish-airlines', name:'LOT Polish Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/lot-polish-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'lufthansa', name:'Lufthansa', group:'Star Alliance', official:'https://www.staralliance.com/members/lufthansa', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'shenzhen-airlines', name:'Shenzhen Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/shenzhen-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'singapore-airlines', name:'Singapore Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/singapore-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'south-african-airways', name:'South African Airways', group:'Star Alliance', official:'https://www.staralliance.com/members/south-african-airways', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'swiss', name:'SWISS', group:'Star Alliance', official:'https://www.staralliance.com/members/swiss', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'tap-air-portugal', name:'TAP Air Portugal', group:'Star Alliance', official:'https://www.staralliance.com/members/tap-air-portugal', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'thai-airways', name:'Thai Airways', group:'Star Alliance', official:'https://www.staralliance.com/members/thai-airways', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'united-airlines', name:'United Airlines', group:'Star Alliance', official:'https://www.staralliance.com/members/united-airlines', officialLabel:'Officieel Star Alliance-profiel en airlinewebsite' },
+    { key:'alaska-airlines', name:'Alaska Airlines', group:'oneworld', official:'https://www.oneworld.com/members/alaska-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'american-airlines', name:'American Airlines', group:'oneworld', official:'https://www.oneworld.com/members/american-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'british-airways', name:'British Airways', group:'oneworld', official:'https://www.oneworld.com/members/british-airways', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'cathay-pacific', name:'Cathay Pacific', group:'oneworld', official:'https://www.oneworld.com/members/cathay-pacific', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'fiji-airways', name:'Fiji Airways', group:'oneworld', official:'https://www.oneworld.com/members/fiji-airways', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'finnair', name:'Finnair', group:'oneworld', official:'https://www.oneworld.com/members/finnair', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'iberia', name:'Iberia', group:'oneworld', official:'https://www.oneworld.com/members/iberia', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'japan-airlines', name:'Japan Airlines', group:'oneworld', official:'https://www.oneworld.com/members/japan-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'malaysia-airlines', name:'Malaysia Airlines', group:'oneworld', official:'https://www.oneworld.com/members/malaysia-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'oman-air', name:'Oman Air', group:'oneworld', official:'https://www.oneworld.com/members/oman-air', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'philippine-airlines', name:'Philippine Airlines', group:'oneworld', official:'https://www.oneworld.com/members/philippine-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'qantas', name:'Qantas', group:'oneworld', official:'https://www.oneworld.com/members/qantas', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'qatar-airways', name:'Qatar Airways', group:'oneworld', official:'https://www.oneworld.com/members/qatar-airways', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'royal-air-maroc', name:'Royal Air Maroc', group:'oneworld', official:'https://www.oneworld.com/members/royal-air-maroc', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'royal-jordanian', name:'Royal Jordanian', group:'oneworld', official:'https://www.oneworld.com/members/royal-jordanian', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'srilankan-airlines', name:'SriLankan Airlines', group:'oneworld', official:'https://www.oneworld.com/members/srilankan-airlines', officialLabel:'Officieel oneworld-profiel en airlinewebsite' },
+    { key:'other', name:'Andere airline / weet ik niet', group:'Niet in de lijst', statement:'We hebben voor deze maatschappij geen specifieke airline-informatie gecontroleerd. Controleer op je boekingsbevestiging wie de vlucht uitvoerde en zoek de maatschappij in het airline-overzicht.', official:'../luchtvaartmaatschappijen/', officialLabel:'Zoek in het airline-overzicht', support:'../contact/', supportLabel:'Bekijk airline-contactgegevens', page:'../luchtvaartmaatschappijen/' }
+  ];
+  var airlineRoutes = {};
+  var airlineSelect = form.elements.namedItem('airline');
+  var airlineGroups = {};
+
+  airlines.forEach(function (airline) {
+    airlineRoutes[airline.key] = airline;
+    if (!airlineGroups[airline.group]) {
+      airlineGroups[airline.group] = document.createElement('optgroup');
+      airlineGroups[airline.group].label = airline.group;
+      airlineSelect.appendChild(airlineGroups[airline.group]);
+    }
+    var option = document.createElement('option');
+    option.value = airline.key;
+    option.textContent = airline.name;
+    airlineGroups[airline.group].appendChild(option);
+  });
 
   function waarde(naam) {
     var el = form.querySelector('input[name="' + naam + '"]:checked') ||
@@ -149,13 +239,148 @@
     });
   }
 
+  function addResultLink(parent, href, label, external) {
+    var link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+    if (external) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    parent.appendChild(link);
+    return link;
+  }
+
+  function addResultList(parent, title, items) {
+    var heading = document.createElement('h3');
+    heading.textContent = title;
+    var list = document.createElement('ol');
+    items.forEach(function (item) {
+      var entry = document.createElement('li');
+      entry.textContent = item;
+      list.appendChild(entry);
+    });
+    parent.append(heading, list);
+  }
+
+  function showAirlineAdvice(airlineKey, route) {
+    var airline = airlineRoutes[airlineKey];
+    if (!airline) return;
+
+    var officialSummary = airline.statement;
+    if (!officialSummary && airline.group === 'Niet in de lijst') {
+      officialSummary = 'Voor deze maatschappij hebben we geen specifieke officiële claim- of rechtenpagina bevestigd. De airline-directory helpt je de uitvoerende maatschappij te herkennen; controleer de boekingsbevestiging en gebruik de officiële website van de airline voor haar actuele claimroute.';
+    } else if (!officialSummary && airline.group === 'Onafhankelijke airlines') {
+      officialSummary = 'De link hieronder gaat naar de officiële contact- of helpomgeving van ' + airline.name + '. Gebruik die voor de actuele werkwijze bij claims, terugbetaling en vluchtproblemen. We hebben geen afzonderlijke vaste extra compensatie van deze airline kunnen bevestigen.';
+    } else if (!officialSummary) {
+      officialSummary = airline.name + ' staat in het officiële ledenoverzicht van ' + airline.group + '. De alliantie behandelt geen individuele vluchtclaims; via het profiel ga je naar de airlinewebsite. We hebben geen afzonderlijke vaste extra compensatie van deze airline kunnen bevestigen.';
+    }
+
+    var box = document.createElement('section');
+    box.className = 'vr-result-airline';
+    box.setAttribute('aria-labelledby', 'result-airline-title');
+
+    var title = document.createElement('h3');
+    title.id = 'result-airline-title';
+    title.textContent = 'Wat zegt ' + airline.name + ' hierover?';
+    var intro = document.createElement('p');
+    intro.textContent = officialSummary;
+
+    var legalTitle = document.createElement('h4');
+    legalTitle.textContent = 'Wat betekent EU261 voor jouw route?';
+    var legal = document.createElement('p');
+    if (route === 'vanEU') {
+      legal.textContent = 'Je koos voor vertrek vanuit de EU. EU261 geldt in beginsel voor vluchten die vanuit de EU vertrekken, ongeacht of de uitvoerende airline Europees is. De route, omstandigheden en het bewijs blijven bepalend voor de afzonderlijke rechten.';
+    } else if (route === 'naarEU') {
+      legal.textContent = 'Je koos voor aankomst in de EU met een airline met een EU-exploitatievergunning. EU261 kan dan van toepassing zijn. Controleer de vergunning van de uitvoerende airline en de specifieke vluchtgegevens; deze check is alleen een eerste indicatie.';
+    } else {
+      legal.textContent = 'Op basis van de gekozen route lijkt EU261 niet van toepassing. De airline kan wel onder lokale passagiersregels of eigen vervoersvoorwaarden vallen. Vraag de maatschappij welke regeling zij op deze vlucht toepast en waar je een verzoek kunt indienen.';
+    }
+
+    var claimTitle = document.createElement('h4');
+    claimTitle.textContent = 'Zo dien je je verzoek in';
+    var claimInfo = document.createElement('p');
+    claimInfo.textContent = 'Richt je verzoek aan de airline die de vlucht daadwerkelijk uitvoerde. Vermeld boekingsnummer, vluchtnummer, datum en route; noteer bij vertraging ook de aankomsttijd op je eindbestemming. Bewaar boekingsbevestiging, boardingpass, berichten van de airline en bonnetjes van noodzakelijke kosten. Vraag bij afwijzing om een schriftelijke beslissing met de reden en onderbouwing.';
+
+    var actions = document.createElement('div');
+    actions.className = 'vr-result-actions';
+    addResultLink(actions, airline.official, airline.officialLabel, airline.official.indexOf('https://') === 0);
+    if (airline.support) {
+      addResultLink(actions, airline.support, airline.supportLabel, airline.support.indexOf('https://') === 0);
+    }
+    if (airline.page) {
+      addResultLink(actions, airline.page, 'Bekijk de airline-uitleg op deze site');
+    }
+
+    var policy = document.createElement('p');
+    policy.className = 'vr-result-policy-note';
+    policy.textContent = 'De airline bepaalt niet of de wettelijke rechten uit EU261 bestaan; de regeling en de feiten zijn daarvoor bepalend. We hebben geen vrijwillige extra compensatie meegerekend. Controleer bij een aangeboden voucher of tegemoetkoming de voorwaarden voordat je die accepteert.';
+    box.append(title, intro, legalTitle, legal, claimTitle, claimInfo, actions, policy);
+    out.appendChild(box);
+  }
+
+  function showNextSteps(klasse, situation) {
+    var steps = [];
+    if (situation === 'vertraagd') {
+      steps = [
+        'Dien je eventuele compensatieclaim schriftelijk in bij de uitvoerende airline. Vermeld boekingsnummer, vlucht, datum, geplande en werkelijke aankomsttijd op je eindbestemming.',
+        'Vraag de airline om de concrete oorzaak van de vertraging en om bewijs of een schriftelijke toelichting als zij je claim afwijst.',
+        'Heb je tijdens een lange wachttijd zelf noodzakelijke, redelijke kosten gemaakt omdat geen verzorging werd geregeld? Voeg gespecificeerde bonnetjes toe; verzorging staat los van compensatie.'
+      ];
+    } else if (situation === 'geannuleerd') {
+      steps = [
+        'Dien je eventuele compensatieclaim schriftelijk in bij de uitvoerende airline. Noteer wanneer je over de annulering bent geïnformeerd en welke vervangende vlucht is aangeboden.',
+        'Terugbetaling of omboeking en verzorging zijn aparte rechten. Vraag afzonderlijk om de keuze/uitvoering daarvan als dat nog niet geregeld is.',
+        'Bewaar het annuleringsbericht, boeking, voorstel voor de vervangende vlucht, correspondentie en bonnetjes van noodzakelijke kosten.'
+      ];
+    } else if (situation === 'overboekt' && waarde('vrijwillig') === 'ja') {
+      steps = [
+        'Vraag de airline om de afspraak met jou schriftelijk te bevestigen, inclusief de afgesproken vergoeding en de vlucht die je daarna neemt.',
+        'Controleer of je hebt gekozen voor terugbetaling of een andere vlucht en of eventuele verzorging tijdens het wachten geregeld is.',
+        'Bewaar de bevestiging van de afspraak, boekingsgegevens, berichten en bonnetjes van noodzakelijke kosten. De afgesproken vergoeding voor vrijwillig afstand doen is iets anders dan standaardcompensatie bij onvrijwillige instapweigering.'
+      ];
+    } else {
+      steps = [
+        'Als je tegen je wil bent geweigerd, dien je verzoek in bij de uitvoerende airline en vermeld dat je een geldige reservering had en op tijd bij de gate was.',
+        'Vraag om een schriftelijke bevestiging van de instapweigering, de reden en de aangeboden keuze tussen terugbetaling of omboeking.',
+        'Bewaar je boekingsbevestiging, boardingpass, bewijs van tijdige aanmelding en alle berichten. Bij vrijwillig afstand doen hangt de afspraak af van wat je met de airline hebt afgesproken.'
+      ];
+    }
+
+    var status = klasse === 'ok'
+      ? 'Deze indicatie gaat over mogelijke compensatie. Vraag daarnaast zo nodig apart om terugbetaling/omboeking, verzorging of vergoeding van noodzakelijke kosten.'
+      : 'Geen of onzekere compensatie betekent niet automatisch dat je geen andere rechten hebt. Terugbetaling/omboeking, verzorging en eventuele kosten zijn aparte vragen met eigen voorwaarden.';
+    var note = document.createElement('p');
+    note.className = 'vr-result-separate-rights';
+    note.textContent = status;
+    out.appendChild(note);
+    addResultList(out, 'Wat kun je nu doen?', steps);
+  }
+
   function toon(klasse, titel, tekst, bedrag) {
     var s = waarde('situatie');
     out.className = 'vr-result ' + klasse;
-    out.innerHTML = '<h2 style="margin-top:0">' + titel + '</h2>' +
-      (bedrag ? '<strong class="vr-big">€' + bedrag.toLocaleString('nl-NL') + '</strong>' : '') +
-      '<p>' + tekst + '</p>' +
-      '<p><a href="' + links[s] + '">Lees meer over je rechten →</a></p>';
+    out.replaceChildren();
+
+    var euLabel = document.createElement('p');
+    euLabel.className = 'vr-result-section-label';
+    euLabel.textContent = 'Indicatie volgens EU-verordening 261/2004 (EU261)';
+    var heading = document.createElement('h2');
+    heading.textContent = titel;
+    out.appendChild(euLabel);
+    out.appendChild(heading);
+    if (bedrag) {
+      var amount = document.createElement('strong');
+      amount.className = 'vr-big';
+      amount.textContent = '€' + bedrag.toLocaleString('nl-NL');
+      out.appendChild(amount);
+    }
+    var explanation = document.createElement('p');
+    explanation.textContent = tekst;
+    out.appendChild(explanation);
+    addResultLink(out, links[s], 'Lees meer over je rechten');
+    showAirlineAdvice(waarde('airline'), waarde('route'));
+    showNextSteps(klasse, s);
     out.hidden = false;
     out.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
