@@ -8,6 +8,142 @@
   var mobileMenu = window.matchMedia('(max-width: 950px)');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var navigationActions = document.querySelector('.vr-nav-actions');
+  if (navigationActions) {
+    var languageSelect = document.createElement('select');
+    languageSelect.className = 'vr-language-select';
+    languageSelect.setAttribute('aria-label', 'Choose website language / Kies de taal van de website');
+    [
+      ['nl', '🇳🇱 NL'],
+      ['en', '🇬🇧 EN']
+    ].forEach(function (language) {
+      var option = document.createElement('option');
+      option.value = language[0];
+      option.textContent = language[1];
+      languageSelect.appendChild(option);
+    });
+
+    var languageStatus = document.createElement('span');
+    languageStatus.className = 'vr-language-status';
+    languageStatus.setAttribute('role', 'status');
+    languageStatus.setAttribute('aria-live', 'polite');
+    navigationActions.appendChild(languageStatus);
+
+    var translateStarted = false;
+    var translateHost;
+    var requestedLanguage = 'nl';
+
+    function currentLanguage() {
+      var match = document.cookie.match(/(?:^|; )googtrans=\/nl\/([^;]+)/);
+      return match && match[1] === 'en' ? 'en' : 'nl';
+    }
+
+    function setTranslatedLanguage(language) {
+      languageSelect.value = language;
+      var googleSelect = document.querySelector('.goog-te-combo');
+      if (!googleSelect) return false;
+      googleSelect.value = language === 'en' ? 'en' : '';
+      googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      return true;
+    }
+
+    function applyLanguageWhenReady(language, attempts) {
+      if (language === 'en' && currentLanguage() === 'en') {
+        languageStatus.textContent = '';
+        return;
+      }
+      if (setTranslatedLanguage(language)) {
+        if (language === 'en' && attempts > 0) {
+          window.setTimeout(function () {
+            applyLanguageWhenReady(language, attempts - 1);
+          }, 300);
+        } else if (language === 'nl' || currentLanguage() === 'en') {
+          languageStatus.textContent = '';
+        } else if (attempts > 0) {
+          window.setTimeout(function () {
+            applyLanguageWhenReady(language, attempts - 1);
+          }, 300);
+        } else {
+          languageSelect.value = 'nl';
+          languageStatus.textContent = 'English translation could not be loaded. Please try again later.';
+          console.error('Google Translate did not apply the English translation.');
+        }
+        return;
+      }
+      if (attempts > 0) {
+        window.setTimeout(function () {
+          applyLanguageWhenReady(language, attempts - 1);
+        }, 300);
+      } else {
+        languageSelect.value = 'nl';
+        languageStatus.textContent = 'English translation could not be loaded. Please try again later.';
+        console.error('Google Translate language selector was not created.');
+      }
+    }
+
+    function loadTranslator(language) {
+      requestedLanguage = language;
+      if (translateStarted) {
+        applyLanguageWhenReady(language, 50);
+        return;
+      }
+      translateStarted = true;
+      translateHost = document.createElement('span');
+      translateHost.id = 'google_translate_element';
+      translateHost.className = 'vr-translate-widget';
+      translateHost.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(translateHost);
+
+      window.googleTranslateElementInit = function () {
+        if (!window.google || !window.google.translate) {
+          translateStarted = false;
+          translateHost.remove();
+          languageSelect.value = 'nl';
+          languageStatus.textContent = 'English translation could not be loaded. Please try again later.';
+          console.error('Google Translate could not be initialized.');
+          return;
+        }
+        new window.google.translate.TranslateElement({
+          pageLanguage: 'nl',
+          includedLanguages: 'en',
+          autoDisplay: false
+        }, 'google_translate_element');
+        applyLanguageWhenReady(requestedLanguage, 50);
+      };
+
+      var translateScript = document.createElement('script');
+      translateScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      translateScript.async = true;
+      translateScript.onerror = function () {
+        translateStarted = false;
+        translateHost.remove();
+        languageSelect.value = 'nl';
+        languageStatus.textContent = 'English translation could not be loaded. Please try again later.';
+        console.error('Google Translate script failed to load.');
+      };
+      document.head.appendChild(translateScript);
+    }
+
+    languageSelect.value = currentLanguage();
+    languageSelect.addEventListener('change', function () {
+      if (languageSelect.value === 'nl') {
+        document.cookie = 'googtrans=/nl/nl; path=/; max-age=31536000; SameSite=Lax';
+        if (window.location.hostname.indexOf('.') !== -1 &&
+            window.location.hostname !== 'localhost' &&
+            window.location.hostname !== '127.0.0.1') {
+          var cookieDomain = window.location.hostname.replace(/^www\./, '');
+          document.cookie = 'googtrans=/nl/nl; path=/; max-age=31536000; SameSite=Lax; domain=.' + cookieDomain;
+        }
+        window.location.reload();
+        return;
+      }
+      loadTranslator(languageSelect.value);
+    });
+    navigationActions.insertBefore(languageSelect, navigationActions.firstChild);
+    navigationActions.insertBefore(languageStatus, languageSelect.nextSibling);
+    if (languageSelect.value === 'en') loadTranslator('en');
+  }
+
   if (navigation) {
     var scrollUpdatePending = false;
     function updateNavigationOnScroll() {
