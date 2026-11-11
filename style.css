@@ -528,7 +528,7 @@ body{margin:0;overflow-x:hidden;color:var(--color-text);font-family:-apple-syste
 
 .vr-nav{position:sticky;top:0;z-index:100;min-height:60px;background:rgba(255,255,255,.94);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);border:0;border-bottom:1px solid transparent;transition:min-height .22s var(--motion-ease),box-shadow .22s var(--motion-ease),border-color .22s var(--motion-ease),background .22s var(--motion-ease)}
 .vr-nav.is-scrolled{min-height:54px;border-bottom-color:var(--color-hairline);background:rgba(255,255,255,.97);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.vr-nav .vr-wrap.vr-nav-inner{position:relative;display:flex;align-items:center;flex-wrap:nowrap;gap:24px;width:min(100% - 48px,1280px);height:60px;padding:0;transition:height .22s var(--motion-ease)}
+.vr-nav .vr-wrap.vr-nav-inner{position:relative;display:flex;align-items:center;flex-wrap:nowrap;gap:24px;width:min(100% - 48px,1280px);max-width:1280px;height:60px;padding:0;transition:height .22s var(--motion-ease)}
 .vr-nav.is-scrolled .vr-wrap.vr-nav-inner{height:54px}
 .vr-logo{display:inline-flex;align-items:center;gap:8px;color:var(--color-text);font-size:14px;font-weight:650;letter-spacing:-.02em;white-space:nowrap}
 .vr-logo-mark{display:block;width:24px;height:24px;flex:0 0 24px;border-radius:0;background:none;color:var(--color-accent);font-size:0}
@@ -569,13 +569,8 @@ iframe.goog-te-banner-frame,iframe[class*="ORHb-OEVmcd"]{display:none!important;
   .vr-nav-actions{gap:6px}
   .vr-language-select{width:64px}
 }
-@media (min-width:951px) and (max-width:1360px){
-  .vr-nav .vr-wrap.vr-nav-inner{height:auto;min-height:60px;flex-wrap:wrap;gap:0 12px;padding-block:6px}
-  .vr-nav.is-scrolled .vr-wrap.vr-nav-inner{height:auto}
-  .vr-menu{order:3;flex:1 0 100%;justify-content:flex-start;flex-wrap:wrap;gap:0}
-}
-@media (max-width:950px){
-  .vr-nav .vr-wrap.vr-nav-inner{width:min(100% - 32px,1080px);height:60px;gap:12px}
+@media (max-width:1360px){
+  .vr-nav .vr-wrap.vr-nav-inner{width:min(100% - 32px,1080px);height:60px;gap:12px;flex-wrap:nowrap}
   .vr-nav.is-scrolled .vr-wrap.vr-nav-inner{height:54px}
   .vr-menu-toggle{display:none}
   html.js-ready .vr-menu-toggle{display:inline-flex}

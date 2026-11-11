@@ -5,7 +5,7 @@
   var menuButton = document.querySelector('[data-menu-toggle]');
   var menu = document.getElementById('site-menu');
   var navigation = document.querySelector('.vr-nav');
-  var mobileMenu = window.matchMedia('(max-width: 950px)');
+  var mobileMenu = window.matchMedia('(max-width: 1360px)');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var navigationActions = document.querySelector('.vr-nav-actions');
